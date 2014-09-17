@@ -22,6 +22,20 @@ class OrgsController < ApplicationController
     @org = Org.find(params[:id])
   end
 
+  def edit
+    @org = Org.find(params[:id])
+  end
+
+  def update
+    @org = Org.find(params[:id])
+
+    if @org.update(org_params)
+      redirect_to orgs_path, :notice => '編輯使用單位成功！'
+    else
+      render :edit
+    end
+  end
+
 
   private
 
