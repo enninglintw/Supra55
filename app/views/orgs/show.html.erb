@@ -1,6 +1,5 @@
 <div class="col-md-12">
   <div class="org">
-    <%= link_to("新增使用者", new_org_member_path(@org), :class => "btn btn-primary pull-right")%>
     <%= link_to("編輯使用單位", edit_org_path(@org), :class => "btn btn-primary pull-right")%> 
   </div>
   <h1> 使用單位 </h1>
@@ -10,6 +9,7 @@
   <p> 電話： <%= @org.tel %> </p>
   <p> 備註： <%= @org.note %> </p>
 
+  <%= link_to("新增使用者", new_org_member_path(@org), :class => "btn btn-primary pull-right")%>
   <h3>使用者</h3>
 
   <table class="table">

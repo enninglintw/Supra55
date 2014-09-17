@@ -32,6 +32,14 @@ class MembersController < ApplicationController
     end
   end
 
+  def destroy
+    @org = Org.find(params[:org_id])
+    @member = @org.members.find(params[:id])
+
+    @member.destroy
+    redirect_to org_path(@org), :alert => '使用者已刪除！'
+  end
+
 
   private
 
