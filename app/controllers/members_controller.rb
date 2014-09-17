@@ -1,12 +1,12 @@
 class MembersController < ApplicationController
 
+  before_action :find_org
+
   def new
-    @org = Org.find(params[:org_id])
     @member = @org.members.new
   end
 
   def create
-    @org = Org.find(params[:org_id])
     @member = @org.members.new(member_params)
 
     if @member.save
@@ -17,12 +17,10 @@ class MembersController < ApplicationController
   end
 
   def edit
-    @org = Org.find(params[:org_id])
     @member = @org.members.find(params[:id])
   end
 
   def update
-    @org = Org.find(params[:org_id])
     @member = @org.members.find(params[:id])
 
     if @member.update(member_params)
@@ -33,7 +31,6 @@ class MembersController < ApplicationController
   end
 
   def destroy
-    @org = Org.find(params[:org_id])
     @member = @org.members.find(params[:id])
 
     @member.destroy
@@ -45,6 +42,10 @@ class MembersController < ApplicationController
 
   def member_params
     params.require(:member).permit(:name, :tel, :education_permitted, :educated_for_sei, :license_for_sei)
+  end
+
+  def find_org
+    @org = Org.find(params[:org_id])
   end
 
 end
