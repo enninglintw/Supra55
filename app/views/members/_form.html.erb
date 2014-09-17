@@ -1,0 +1,12 @@
+<%= form_for [@org, @member] do |f| %>
+  姓名 <%= f.text_field :name %> <br />
+  電話 <%= f.text_field :tel %> <br />
+  申請教學資格 <%= f.check_box :education_permitted %> <br />
+  SEI教學完成 <%= f.check_box :educated_for_sei %> <br />
+  SEI執照 <%= f.check_box :license_for_sei %>
+
+  <hr>
+  <div class="form-actions">
+    <%= f.submit "Submit", :disable_with => 'Submiting...', :class => "btn btn-primary"%> 
+  </div>
+<% end %> 

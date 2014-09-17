@@ -1,6 +1,7 @@
 <div class="col-md-12">
   <div class="org">
-    <%= link_to("編輯使用單位", edit_org_path(@org) , :class => "btn btn-primary pull-right")%> 
+    <%= link_to("新增使用者", new_org_member_path(@org), :class => "btn btn-primary pull-right")%>
+    <%= link_to("編輯使用單位", edit_org_path(@org), :class => "btn btn-primary pull-right")%> 
   </div>
   <h1> 使用單位 </h1>
   <h2> <%= @org.name %> </h2>
@@ -26,7 +27,6 @@
     <tbody>
       <% @members.each do |member| %> 
         <tr>
-          <td> </td>
           <td> <%= member.id %> </td>
           <td> <%= member.name %> </td>
           <td> <%= member.tel %> </td>
@@ -34,11 +34,11 @@
           <td> <%= member.educated_for_sei %> </td>
           <td> <%= member.license_for_sei %> </td>
           <td> <%= link_to("Edit", 
-                           edit_group_member_path(member.group, member), 
+                           edit_org_member_path(member.org, member), 
                            :class => "btn btn-default btn-xs")%>
 
                <%= link_to("Delete", 
-                           group_member_path(member.group, member), 
+                           org_member_path(member.org, member), 
                            :class => "btn btn-default btn-xs ",
                            :method => :delete,
                            data: { confirm: "Are you sure?" } )%></td>
