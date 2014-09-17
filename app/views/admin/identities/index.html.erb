@@ -33,11 +33,11 @@
         <td>  <%= identity.discount_above_40k %> </td>
         <td>  <%= identity.discount_above_60k %> </td>
         <td>  <%= link_to("Edit", 
-                          edit_identity_path(identity), 
+                          edit_admin_identity_path(identity), 
                           :class => "btn btn-sm btn-default")%>
 
               <%= link_to("Delete", 
-                          identity_path(identity), 
+                          admin_identity_path(identity), 
                           :class => "btn btn-sm btn-default", 
                           :method=>:delete,
                           data: { confirm: "Are you sure?" } )%></td> 

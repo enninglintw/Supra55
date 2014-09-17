@@ -1,0 +1,12 @@
+<%= form_for [:admin, @identity] do |f| %>
+  分類：<%= f.text_field :classification %> <br />
+  SEI 費用：<%= f.number_field :sei_fee %> <br />
+  SEI + EDS 費用：<%= f.number_field :sei_eds_fee %> <br />
+  SEI + EBSD 費用：<%= f.number_field :sei_ebsd_fee %> <br />
+  SEI + EDS + EBSD 費用：<%= f.number_field :sei_eds_ebsd_fee %> <br />
+  年使用費滿3萬折扣：<%= f.number_field :discount_above_30k, :class => 'text_field', :step => 0.05 %> <br />
+  年使用費滿4萬折扣：<%= f.number_field :discount_above_40k, :class => 'text_field', :step => 0.05 %> <br />
+  年使用費滿6萬折扣：<%= f.number_field :discount_above_60k, :class => 'text_field', :step => 0.05 %> <br />
+
+  <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%> 
+<% end %> 
