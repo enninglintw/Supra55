@@ -2,16 +2,19 @@
   <div class="org">
     <%= link_to("編輯使用單位", edit_org_path(@org) , :class => "btn btn-primary pull-right")%> 
   </div>
+  <h1> 使用單位 </h1>
   <h2> <%= @org.name %> </h2>
   <p> 全名： <%= @org.official_name %> </p>
   <p> 地址： <%= @org.address %> </p>
   <p> 電話： <%= @org.tel %> </p>
   <p> 備註： <%= @org.note %> </p>
 
+  <h3>使用者</h3>
+
   <table class="table">
     <thead>
       <tr>
-        <th>使用者</th>
+        <th>#</th>
         <th>姓名</th>
         <th>電話</th>
         <th>申請教學資格</th>
@@ -24,6 +27,7 @@
       <% @members.each do |member| %> 
         <tr>
           <td> </td>
+          <td> <%= member.id %> </td>
           <td> <%= member.name %> </td>
           <td> <%= member.tel %> </td>
           <td> <%= member.education_permitted %> </td>
