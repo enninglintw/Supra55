@@ -36,6 +36,13 @@ class OrgsController < ApplicationController
     end
   end
 
+  def destroy
+    @org = Org.find(params[:id])
+
+    @org.destroy
+    redirect_to orgs_path, :alert => '使用單位已刪除！'
+  end
+
 
   private
 
