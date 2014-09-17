@@ -1,0 +1,48 @@
+<h1>儀器使用費價目表</h1>
+
+<div class="col-md-12"> 
+  <div class="identity">
+    <%= link_to("新增分類", new_admin_identity_path, :class => "btn btn-primary pull-right") %>
+  </div>
+
+  <table class="table table-hover">
+    <thead> 
+      <tr>
+        <td> # </td>
+        <td> 分類 </td>
+        <td> SEI 費用 </td>
+        <td> SEI + EDS 費用 </td>
+        <td> SEI + EBSD 費用 </td>
+        <td> SEI + EDS + EBSD 費用 </td>
+        <td> 年使用費滿3萬折扣 </td>
+        <td> 年使用費滿4萬折扣 </td>
+        <td> 年使用費滿6萬折扣 </td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @identities.each do |identity| %> 
+      <tr>
+        <td>  <%= link_to(identity.id, admin_identities_path) %> </td>
+        <td>  <%= link_to(identity.classification, admin_identities_path) %> </td>
+        <td>  <%= identity.sei_fee %> </td>
+        <td>  <%= identity.sei_eds_fee %> </td>
+        <td>  <%= identity.sei_ebsd_fee %> </td>
+        <td>  <%= identity.sei_eds_ebsd_fee %> </td>
+        <td>  <%= identity.discount_above_30k %> </td>
+        <td>  <%= identity.discount_above_40k %> </td>
+        <td>  <%= identity.discount_above_60k %> </td>
+        <td>  <%= link_to("Edit", 
+                          edit_identity_path(identity), 
+                          :class => "btn btn-sm btn-default")%>
+
+              <%= link_to("Delete", 
+                          identity_path(identity), 
+                          :class => "btn btn-sm btn-default", 
+                          :method=>:delete,
+                          data: { confirm: "Are you sure?" } )%></td> 
+      </tr>
+      <% end %> 
+    </tbody>
+  </table>
+</div>

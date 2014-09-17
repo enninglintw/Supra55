@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917101008) do
+ActiveRecord::Schema.define(version: 20140917143345) do
+
+  create_table "identities", force: true do |t|
+    t.string   "classification"
+    t.integer  "sei_fee"
+    t.integer  "sei_eds_fee"
+    t.integer  "sei_ebsd_fee"
+    t.integer  "sei_eds_ebsd_fee"
+    t.float    "discount_above_30k"
+    t.float    "discount_above_40k"
+    t.float    "discount_above_60k"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "members", force: true do |t|
     t.string   "name"
