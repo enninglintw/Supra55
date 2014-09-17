@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :orgs
+  resources :orgs do
+    resources :members
+  end
 
   root 'orgs#index'
 
