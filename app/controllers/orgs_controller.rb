@@ -20,6 +20,7 @@ class OrgsController < ApplicationController
 
   def show
     @org = Org.find(params[:id])
+    @members = @org.members
   end
 
   def edit
