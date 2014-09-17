@@ -32,6 +32,13 @@ class Admin::IdentitiesController < ApplicationController
     end
   end
 
+  def destroy
+    @identity = Identity.find(params[:id])
+
+    @identity.destroy
+    redirect_to admin_identities_path, :alert => '分類已刪除！'
+  end
+
 
   private
 
