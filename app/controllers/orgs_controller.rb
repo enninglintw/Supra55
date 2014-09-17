@@ -18,6 +18,10 @@ class OrgsController < ApplicationController
     end
   end
 
+  def show
+    @org = Org.find(params[:id])
+  end
+
 
   private
 

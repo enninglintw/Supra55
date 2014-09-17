@@ -1,0 +1,10 @@
+<div class="col-md-12">
+  <div class="org">
+    <%= link_to("編輯使用單位", edit_org_path(@org) , :class => "btn btn-primary pull-right")%> 
+  </div>
+  <h2> <%= @org.name %> </h2>
+  <p> 全名： <%= @org.official_name %> </p>
+  <p> 地址： <%= @org.address %> </p>
+  <p> 電話： <%= @org.tel %> </p>
+  <p> 傳真： <%= "#" %> </p>
+</div>
