@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  classification: MyString
+  sei_fee: 1
+  sei_eds_fee: 1
+  sei_ebsd_fee: 1
+  sei_eds_ebsd_fee: 1
+  discount_above_30k: 1.5
+  discount_above_40k: 1.5
+  discount_above_60k: 1.5
+
+two:
+  classification: MyString
+  sei_fee: 1
+  sei_eds_fee: 1
+  sei_ebsd_fee: 1
+  sei_eds_ebsd_fee: 1
+  discount_above_30k: 1.5
+  discount_above_40k: 1.5
+  discount_above_60k: 1.5
