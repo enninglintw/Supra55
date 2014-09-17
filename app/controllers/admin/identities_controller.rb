@@ -18,6 +18,20 @@ class Admin::IdentitiesController < ApplicationController
     end
   end
 
+  def edit
+    @identity = Identity.find(params[:id])
+  end
+
+  def update
+    @identity = Identity.find(params[:id])
+
+    if @identity.update(identity_params)
+      redirect_to admin_identities_path, :notice => '編輯分類成功！'
+    else
+      render :edit
+    end
+  end
+
 
   private
 
