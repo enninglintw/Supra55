@@ -18,6 +18,11 @@ class Admin::IdentitiesController < ApplicationController
     end
   end
 
+  def show
+    @identity = Identity.find(params[:id])
+    @orgs = @identity.orgs
+  end
+
   def edit
     @identity = Identity.find(params[:id])
   end

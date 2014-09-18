@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917143345) do
+ActiveRecord::Schema.define(version: 20140917180004) do
 
   create_table "identities", force: true do |t|
     t.string   "classification"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140917143345) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "note"
+    t.integer  "identity_id"
   end
 
   create_table "users", force: true do |t|

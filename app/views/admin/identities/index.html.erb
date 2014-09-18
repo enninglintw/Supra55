@@ -23,8 +23,8 @@
     <tbody>
       <% @identities.each do |identity| %> 
       <tr>
-        <td>  <%= link_to(identity.id, admin_identities_path) %> </td>
-        <td>  <%= link_to(identity.classification, admin_identities_path) %> </td>
+        <td>  <%= link_to(identity.id, admin_identity_path(identity)) %> </td>
+        <td>  <%= link_to(identity.classification, admin_identity_path(identity)) %> </td>
         <td>  <%= identity.sei_fee %> </td>
         <td>  <%= identity.sei_eds_fee %> </td>
         <td>  <%= identity.sei_ebsd_fee %> </td>

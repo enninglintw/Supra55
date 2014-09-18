@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :identities
+    resources :orgs
+    resources :members
   end
 
   devise_for :users
