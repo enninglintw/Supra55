@@ -1,0 +1,65 @@
+<h1>使用記錄列表</h1>
+
+<div class="col-md-12"> 
+  <div class="record">
+    <%= link_to("新增使用記錄", new_admin_record_path, :class => "btn btn-primary pull-right" ) %>
+  </div>
+
+  <table class="table table-hover">
+    <thead> 
+      <tr>
+        <th> # </th>
+        <th> 使用者 </th>
+        <th> 使用單位 </th>
+        <th> 使用者分類 </th>
+        <th> 開始時間 </th>
+        <th> 結束時間 </th>
+        <th> SEI </th>
+        <th> SEI+EDS </th>
+        <th> SEI+EBSD </th>
+        <th> SEI+EDS+EBSD </th>
+        <th> 使用總時數 </th>
+        <th> SEI 費用 </th>
+        <th> SEI + EDS 費用 </th>
+        <th> SEI + EBSD 費用 </th>
+        <th> SEI + EDS + EBSD 費用 </th>
+        <th> 原價 </th>
+        <th> 折扣 </th>
+        <th> 總價 </th>
+        <th> 是否已開繳費通知單？ </th>
+        <th> 各使用單位當年度累計金額 </th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @records.each do |record| %> 
+      <tr>
+        <td> <%= link_to(record.id, admin_record_path(record)) %> </td>
+        <td> <%= link_to(record.member.name, "#") %> </td>
+        <td> <%= link_to(record.org.name, "#") %> </td>
+        <td> <%= link_to(record.identity.classification, "#") %> </td>
+        <td> <%= record.start_at %> </td>
+        <td> <%= record.end_at %> </td>
+        <td> <%= "SEI" %> </td>
+        <td> <%= "SEI" %> </td>
+        <td> <%= "SEI" %> </td>
+        <td> <%= "SEI" %> </td>
+        <td> <%= "SEI" %> </td>
+        <td> <%= "SEI" %> </td>
+        <td> <%= "SEI" %> </td>
+        <td> <%= "SEI" %> </td>
+        <td> <%= link_to("Edit", 
+                         edit_admin_record_path(record), 
+                         :class => "btn btn-sm btn-default")%>
+
+             <%= link_to("Delete", 
+                         admin_record_path(record), 
+                         :class => "btn btn-sm btn-default", 
+                         :method => :delete,
+                         data: { confirm: "Are you sure?" } )%></td> 
+      </tr>
+      <% end %> 
+    </tbody>
+  </table>
+</div>
