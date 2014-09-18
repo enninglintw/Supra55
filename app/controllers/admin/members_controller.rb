@@ -46,15 +46,22 @@ class Admin::MembersController < ApplicationController
     end
   end
 
+  def destroy
+    @member = Member.find(params[:id])
+
+    @member.destroy
+    redirect_to admin_members_path, :alert => '使用者已刪除！'
+  end
+
 
   private
 
   def member_params
     params.require(:member).permit(:name,
-                                    :tel,
-                                    :education_permitted,
-                                    :educated_for_sei,
-                                    :license_for_sei,
-                                    :org_id)
+                                   :tel,
+                                   :education_permitted,
+                                   :educated_for_sei,
+                                   :license_for_sei,
+                                   :org_id)
   end
 end
