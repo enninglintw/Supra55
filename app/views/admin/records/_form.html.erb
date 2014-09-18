@@ -1,0 +1,9 @@
+<%= form_for [:admin, @record] do |f| %>
+  使用者：<%= f.select :member_id, @options %> <br />
+  開始時間： <%= f.datetime_field :start_at %> <br />
+  結束時間： <%= f.datetime_field :end_at %> <br />
+
+  <div class="form-actions">
+    <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%> 
+  </div>
+<% end %> 
