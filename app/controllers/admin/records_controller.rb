@@ -41,6 +41,13 @@ class Admin::RecordsController < ApplicationController
     end
   end
 
+  def destroy
+    @record = Record.find(params[:id])
+
+    @record.destroy
+    redirect_to admin_records_path, :alert => '使用記錄已刪除！'
+  end
+
 
   private
 
