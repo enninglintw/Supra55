@@ -50,7 +50,12 @@ class OrgsController < ApplicationController
   private
 
   def org_params
-    params.require(:org).permit(:name, :official_name, :address, :tel, :note)
+    params.require(:org).permit(:name, 
+                                :official_name, 
+                                :address, 
+                                :tel, 
+                                :note,
+                                :identity_id)
   end
 
 end

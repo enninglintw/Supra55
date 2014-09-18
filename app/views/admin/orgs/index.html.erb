@@ -11,6 +11,7 @@
         <th> 全名 </th>
         <th> 地址 </th>
         <th> 電話 </th>
+        <th> 分類 </th>
         <th> 備註 </th>
       </tr>
     </thead>
@@ -23,6 +24,7 @@
         <td>  <%= org.official_name %> </td>
         <td>  <%= org.address %> </td>
         <td>  <%= org.tel %> </td>
+        <td>  <%= org.identity_id %> </td>
         <td>  <%= org.note %> </td>
         <td>  <%= link_to("Edit", 
                           edit_admin_org_path(org), 
