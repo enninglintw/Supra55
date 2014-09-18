@@ -24,6 +24,23 @@ class Admin::RecordsController < ApplicationController
     end
   end
 
+  def edit
+    @record = Record.find(params[:id])
+    @options = Member.all.collect do |member|
+      [member.name, member.id]
+    end
+  end
+
+  def update
+    @record = Record.find(params[:id])
+
+    if @record.update(record_params)
+      redirect_to admin_records_path, :notice => '編輯使用記錄成功！'
+    else
+      render :edit
+    end
+  end
+
 
   private
 
