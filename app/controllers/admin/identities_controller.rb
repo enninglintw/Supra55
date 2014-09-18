@@ -60,4 +60,5 @@ class Admin::IdentitiesController < ApplicationController
                                      :discount_above_40k, 
                                      :discount_above_60k)
   end
+  
 end
