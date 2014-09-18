@@ -1,4 +1,4 @@
-<%= form_for [@org, @member] do |f| %>
+<%= form_for [:admin, @member] do |f| %>
   姓名： <%= f.text_field :name %> <br />
   電話： <%= f.text_field :tel %> <br />
   <%= f.check_box :education_permitted %> 申請教學資格 <br />
