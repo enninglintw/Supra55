@@ -36,20 +36,20 @@
       <% @records.each do |record| %> 
       <tr>
         <td> <%= link_to(record.id, admin_record_path(record)) %> </td>
-        <td> <%= record.member_id %> </td>
-        <td> <%= "SEI" %> </td>
-        <td> <%= "SEI" %> </td>
+        <td> <%= link_to(record.member.name, "#") %> </td>
+        <td> <%= record.org.name %> </td>
+        <td> <%= record.identity.classification %> </td>
         <td> <%= record.start_at %> </td>
         <td> <%= record.end_at %> </td>
         <td> <%= "SEI" %> </td>
         <td> <%= "SEI" %> </td>
         <td> <%= "SEI" %> </td>
         <td> <%= "SEI" %> </td>
-        <td> <%= "SEI" %> </td>
-        <td> <%= "SEI" %> </td>
-        <td> <%= "SEI" %> </td>
-        <td> <%= "SEI" %> </td>
-        <td> <%= "SEI" %> </td>
+        <td> <%= (record.end_at - record.start_at) / 3600 %> </td>
+        <td> <%= record.identity.sei_fee %> </td>
+        <td> <%= record.identity.sei_eds_fee %> </td>
+        <td> <%= record.identity.sei_ebsd_fee %> </td>
+        <td> <%= record.identity.sei_eds_ebsd_fee %> </td>
         <td> <%= "SEI" %> </td>
         <td> <%= "SEI" %> </td>
         <td> <%= "SEI" %> </td>

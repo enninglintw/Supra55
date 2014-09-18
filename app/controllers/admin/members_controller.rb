@@ -26,7 +26,7 @@ class Admin::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-    # @records = @member.records
+    @records = @member.records
   end
 
   def edit

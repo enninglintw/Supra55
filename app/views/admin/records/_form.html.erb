@@ -1,5 +1,7 @@
 <%= form_for [:admin, @record] do |f| %>
-  使用者：<%= f.select :member_id, @options %> <br />
+  使用者：<%= f.select :member_id, @m_options %> <br />
+  使用者單位：<%= f.select :org_id, @o_options %> <br />
+  使用者分類：<%= f.select :identity_id, @i_options %> <br />
   開始時間： <%= f.datetime_field :start_at %> <br />
   結束時間： <%= f.datetime_field :end_at %> <br />
 

@@ -5,6 +5,8 @@
   <h1> 使用者 </h1>
   <h2> <%= @member.name %> </h2>
   <p> 電話： <%= @member.tel %> </p>
+  <p> 隸屬單位： <%= @member.org.name %> </p>
+  <p> 分類： <%= @member.org.identity.classification %> </p>
   <p> 申請教學資格： <%= @member.education_permitted %> </p>
   <p> SEI教學完成： <%= @member.educated_for_sei %> </p>
   <p> SEI執照： <%= @member.license_for_sei %> </p>
@@ -17,8 +19,6 @@
     <thead>
       <tr>
         <th> # </th>
-        <th> 使用者姓名 </th>
-        <th> 使用者電話 </th>
         <th> 開始時間 </th>
         <th> 結束時間 </th>
         <th> 使用總時數 </th>
@@ -27,12 +27,12 @@
     </thead>
 
     <tbody>
-        <td> <%= "使用者id" %> </td>
-        <td> <%= "使用者姓名" %> </td>
-        <td> <%= "使用者電話" %> </td>
-        <td> <%= "開始時間" %> </td>
-        <td> <%= "結束時間" %> </td>
-        <td> <%= "使用總時數" %> </td>
+      <% @records.each do |record| %>
+      <tr>
+        <td> <%= record.member_id %> </td>
+        <td> <%= record.start_at %> </td>
+        <td> <%= record.end_at %> </td>
+        <td> <%= (record.end_at - record.start_at) / 3600 %> </td>
         <td> <%= link_to("Edit", 
                          "#", 
                          :class => "btn btn-sm btn-default")%>
@@ -43,6 +43,7 @@
                          :method => :delete,
                          data: { confirm: "Are you sure?" } )%></td> 
       </tr>
+      <% end %>
     </tbody>
   </table>
 </div>

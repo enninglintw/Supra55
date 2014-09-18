@@ -9,8 +9,17 @@ class Admin::RecordsController < ApplicationController
 
   def new
     @record = Record.new
-    @options = Member.all.collect do |member|
+    
+    @m_options = Member.all.collect do |member|
       [member.name, member.id]
+    end
+
+    @o_options = Org.all.collect do |org|
+      [org.name, org.id]
+    end
+    
+    @i_options = Identity.all.collect do |identity|
+      [identity.classification, identity.id]
     end
   end
 
@@ -25,9 +34,18 @@ class Admin::RecordsController < ApplicationController
   end
 
   def edit
-    @record = Record.find(params[:id])
-    @options = Member.all.collect do |member|
+    @record = Record.new
+    
+    @m_options = Member.all.collect do |member|
       [member.name, member.id]
+    end
+
+    @o_options = Org.all.collect do |org|
+      [org.name, org.id]
+    end
+    
+    @i_options = Identity.all.collect do |identity|
+      [identity.classification, identity.id]
     end
   end
 
@@ -54,6 +72,8 @@ class Admin::RecordsController < ApplicationController
   def record_params
     params.require(:record).permit(:start_at,
                                    :end_at,
+                                   :identity_id,
+                                   :org_id,
                                    :member_id)
   end
 end
