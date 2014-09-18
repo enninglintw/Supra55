@@ -1,10 +1,10 @@
 <%= form_for [:admin, @org] do |f| %>
+  分類：<%= f.select :identity_id, @options %> <br />
   名稱：<%= f.text_field :name %> <br />
   全名：<%= f.text_area :official_name %> <br />
   地址：<%= f.text_area :address %> <br />
   電話：<%= f.text_area :tel %> <br />
   備註：<%= f.text_area :note %> <br />
-  分類：<%= f.select :identity_id, @options %> <br />
 
   <div class="form-actions">
     <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%>
