@@ -24,6 +24,11 @@ class Admin::MembersController < ApplicationController
     end
   end
 
+  def show
+    @member = Member.find(params[:id])
+    # @records = @member.records
+  end
+
 
   private
 
