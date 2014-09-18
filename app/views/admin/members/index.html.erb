@@ -1,19 +1,12 @@
-<div class="col-md-12">
-  <div class="org">
-    <%= link_to("編輯使用單位", edit_admin_org_path(@org), :class => "btn btn-primary pull-right")%> 
-  </div>
-  <h1> 使用單位 </h1>
-  <h2> <%= @org.name %> </h2>
-  <p> 全名： <%= @org.official_name %> </p>
-  <p> 地址： <%= @org.address %> </p>
-  <p> 電話： <%= @org.tel %> </p>
-  <p> 備註： <%= @org.note %> </p>
-  
-  <%= link_to("新增使用者", new_admin_member_path, :class => "btn btn-primary pull-right")%>
-  <h3>使用者</h3>
+<h1>使用者列表</h1>
 
-  <table class="table">
-    <thead>
+<div class="col-md-12"> 
+  <div class="member">
+    <%= link_to("新增使用者", new_admin_member_path, :class => "btn btn-primary pull-right" ) %>
+  </div>
+
+  <table class="table table-hover">
+    <thead> 
       <tr>
         <th>#</th>
         <th>姓名</th>
@@ -28,8 +21,8 @@
     <tbody>
       <% @members.each do |member| %> 
       <tr>
-        <td> <%= member.id %> </td>
-        <td> <%= member.name %> </td>
+        <td>  <%= link_to(member.id, admin_member_path(member)) %> </td>
+        <td>  <%= link_to(member.name, admin_member_path(member)) %> </td>
         <td> <%= member.tel %> </td>
         <td> <%= member.education_permitted %> </td>
         <td> <%= member.educated_for_sei %> </td>
