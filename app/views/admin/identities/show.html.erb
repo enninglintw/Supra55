@@ -12,7 +12,7 @@
   <p> 年使用費滿4萬折扣： <%= @identity.discount_above_40k %> </p>
   <p> 年使用費滿6萬折扣： <%= @identity.discount_above_60k %> </p>
 
-  <%= link_to("新增使用單位", new_admin_org_path(@org), :class => "btn btn-primary pull-right")%>
+  <%= link_to("新增使用單位", new_admin_org_path, :class => "btn btn-primary pull-right")%>
   <h3>使用單位</h3>
 
   <table class="table">
@@ -31,21 +31,21 @@
     <tbody>
       <% @orgs.each do |org| %> 
       <tr>
-        <td>  <%= link_to(org.id, admin_org_path(org)) %> </td>
-        <td>  <%= link_to(org.name, admin_org_path(org)) %> </td>
-        <td>  <%= org.official_name %> </td>
-        <td>  <%= org.address %> </td>
-        <td>  <%= org.tel %> </td>
-        <td>  <%= org.note %> </td>
-        <td>  <%= link_to("Edit", 
-                          edit_admin_org_path(org), 
-                          :class => "btn btn-sm btn-default")%>
+        <td> <%= link_to(org.id, admin_org_path(org)) %> </td>
+        <td> <%= link_to(org.name, admin_org_path(org)) %> </td>
+        <td> <%= org.official_name %> </td>
+        <td> <%= org.address %> </td>
+        <td> <%= org.tel %> </td>
+        <td> <%= org.note %> </td>
+        <td> <%= link_to("Edit", 
+                         edit_admin_org_path(org), 
+                         :class => "btn btn-sm btn-default")%>
 
-              <%= link_to("Delete", 
-                          admin_org_path(org), 
-                          :class => "btn btn-sm btn-default", 
-                          :method => :delete,
-                          data: { confirm: "Are you sure?" } )%></td> 
+             <%= link_to("Delete", 
+                         admin_org_path(org), 
+                         :class => "btn btn-sm btn-default", 
+                         :method => :delete,
+                         data: { confirm: "Are you sure?" } )%></td> 
       </tr>
       <% end %> 
     </tbody>

@@ -22,22 +22,22 @@
     <tbody>
       <% @members.each do |member| %> 
       <tr>
-        <td>  <%= link_to(member.id, admin_member_path(member)) %> </td>
-        <td>  <%= link_to(member.name, admin_member_path(member)) %> </td>
+        <td> <%= link_to(member.id, admin_member_path(member)) %> </td>
+        <td> <%= link_to(member.name, admin_member_path(member)) %> </td>
         <td> <%= member.tel %> </td>
         <td> <%= member.org_id %> </td>
         <td> <%= member.education_permitted %> </td>
         <td> <%= member.educated_for_sei %> </td>
         <td> <%= member.license_for_sei %> </td>
-        <td>  <%= link_to("Edit", 
-                          edit_admin_member_path(member), 
-                          :class => "btn btn-sm btn-default")%>
+        <td> <%= link_to("Edit", 
+                         edit_admin_member_path(member), 
+                         :class => "btn btn-sm btn-default")%>
 
-              <%= link_to("Delete", 
-                          admin_member_path(member), 
-                          :class => "btn btn-sm btn-default", 
-                          :method => :delete,
-                          data: { confirm: "Are you sure?" } )%></td> 
+             <%= link_to("Delete", 
+                         admin_member_path(member), 
+                         :class => "btn btn-sm btn-default", 
+                         :method => :delete,
+                         data: { confirm: "Are you sure?" } )%></td> 
       </tr>
       <% end %> 
     </tbody>

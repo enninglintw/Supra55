@@ -15,12 +15,12 @@
   <table class="table">
     <thead>
       <tr>
-        <th>#</th>
-        <th>姓名</th>
-        <th>電話</th>
-        <th>申請教學資格</th>
-        <th>SEI教學完成</th>
-        <th>SEI執照</th>
+        <th> # </th>
+        <th> 姓名 </th>
+        <th> 電話 </th>
+        <th> 申請教學資格 </th>
+        <th> SEI教學完成 </th>
+        <th> SEI執照 </th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -28,21 +28,21 @@
     <tbody>
       <% @members.each do |member| %> 
       <tr>
-        <td> <%= member.id %> </td>
-        <td> <%= member.name %> </td>
+        <td> <%= link_to(member.id, admin_member_path(member)) %> </td>
+        <td> <%= link_to(member.name, admin_member_path(member)) %> </td>
         <td> <%= member.tel %> </td>
         <td> <%= member.education_permitted %> </td>
         <td> <%= member.educated_for_sei %> </td>
         <td> <%= member.license_for_sei %> </td>
-        <td>  <%= link_to("Edit", 
-                          edit_admin_member_path(member), 
-                          :class => "btn btn-sm btn-default")%>
+        <td> <%= link_to("Edit", 
+                         edit_admin_member_path(member), 
+                         :class => "btn btn-sm btn-default")%>
 
-              <%= link_to("Delete", 
-                          admin_member_path(member), 
-                          :class => "btn btn-sm btn-default", 
-                          :method => :delete,
-                          data: { confirm: "Are you sure?" } )%></td> 
+             <%= link_to("Delete", 
+                         admin_member_path(member), 
+                         :class => "btn btn-sm btn-default", 
+                         :method => :delete,
+                         data: { confirm: "Are you sure?" } )%></td> 
       </tr>
       <% end %> 
     </tbody>

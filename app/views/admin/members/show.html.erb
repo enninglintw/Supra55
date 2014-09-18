@@ -5,9 +5,9 @@
   <h1> 使用者 </h1>
   <h2> <%= @member.name %> </h2>
   <p> 電話： <%= @member.tel %> </p>
-  <p> <%= @member.education_permitted %> 申請教學資格 </p>
-  <p> <%= @member.educated_for_sei %> SEI教學完成 </p>
-  <p> <%= @member.license_for_sei %> SEI執照 </p>
+  <p> 申請教學資格： <%= @member.education_permitted %> </p>
+  <p> SEI教學完成： <%= @member.educated_for_sei %> </p>
+  <p> SEI執照： <%= @member.license_for_sei %> </p>
  
   <%= link_to("新增使用記錄", "new_admin_record_path", :class => "btn btn-primary pull-right")%>
   <h3>使用記錄</h3>
@@ -15,32 +15,32 @@
   <table class="table">
     <thead>
       <tr>
-        <th>#</th>
-        <th>使用者姓名</th>
-        <th>使用者電話</th>
-        <th>開始時間</th>
-        <th>結束時間</th>
-        <th>使用總時數</th>
+        <th> # </th>
+        <th> 使用者姓名 </th>
+        <th> 使用者電話 </th>
+        <th> 開始時間 </th>
+        <th> 結束時間 </th>
+        <th> 使用總時數 </th>
         <th colspan="2"></th>
       </tr>
     </thead>
 
     <tbody>
-        <td> <%= "#" %> </td>
-        <td> <%= "#" %> </td>
-        <td> <%= "#" %> </td>
-        <td> <%= "#" %> </td>
-        <td> <%= "#" %> </td>
-        <td> <%= "#" %> </td>
-        <td>  <%= link_to("Edit", 
-                          "#", 
-                          :class => "btn btn-sm btn-default")%>
+        <td> <%= "使用者id" %> </td>
+        <td> <%= "使用者姓名" %> </td>
+        <td> <%= "使用者電話" %> </td>
+        <td> <%= "開始時間" %> </td>
+        <td> <%= "結束時間" %> </td>
+        <td> <%= "使用總時數" %> </td>
+        <td> <%= link_to("Edit", 
+                         "#", 
+                         :class => "btn btn-sm btn-default")%>
 
-              <%= link_to("Delete", 
-                          "#", 
-                          :class => "btn btn-sm btn-default", 
-                          :method => :delete,
-                          data: { confirm: "Are you sure?" } )%></td> 
+             <%= link_to("Delete", 
+                         "#", 
+                         :class => "btn btn-sm btn-default", 
+                         :method => :delete,
+                         data: { confirm: "Are you sure?" } )%></td> 
       </tr>
     </tbody>
   </table>

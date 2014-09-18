@@ -1,4 +1,4 @@
-<h1>儀器使用費價目表</h1>
+<h1>儀器使用費價目列表</h1>
 
 <div class="col-md-12"> 
   <div class="identity">
@@ -8,39 +8,39 @@
   <table class="table table-hover">
     <thead> 
       <tr>
-        <td> # </td>
-        <td> 分類 </td>
-        <td> SEI 費用 </td>
-        <td> SEI + EDS 費用 </td>
-        <td> SEI + EBSD 費用 </td>
-        <td> SEI + EDS + EBSD 費用 </td>
-        <td> 年使用費滿3萬折扣 </td>
-        <td> 年使用費滿4萬折扣 </td>
-        <td> 年使用費滿6萬折扣 </td>
+        <th> # </th>
+        <th> 分類 </th>
+        <th> SEI 費用 </th>
+        <th> SEI + EDS 費用 </th>
+        <th> SEI + EBSD 費用 </th>
+        <th> SEI + EDS + EBSD 費用 </th>
+        <th> 年使用費滿3萬折扣 </th>
+        <th> 年使用費滿4萬折扣 </th>
+        <th> 年使用費滿6萬折扣 </th>
       </tr>
     </thead>
 
     <tbody>
       <% @identities.each do |identity| %> 
       <tr>
-        <td>  <%= link_to(identity.id, admin_identity_path(identity)) %> </td>
-        <td>  <%= link_to(identity.classification, admin_identity_path(identity)) %> </td>
-        <td>  <%= identity.sei_fee %> </td>
-        <td>  <%= identity.sei_eds_fee %> </td>
-        <td>  <%= identity.sei_ebsd_fee %> </td>
-        <td>  <%= identity.sei_eds_ebsd_fee %> </td>
-        <td>  <%= identity.discount_above_30k %> </td>
-        <td>  <%= identity.discount_above_40k %> </td>
-        <td>  <%= identity.discount_above_60k %> </td>
-        <td>  <%= link_to("Edit", 
-                          edit_admin_identity_path(identity), 
-                          :class => "btn btn-sm btn-default")%>
+        <td> <%= link_to(identity.id, admin_identity_path(identity)) %> </td>
+        <td> <%= link_to(identity.classification, admin_identity_path(identity)) %> </td>
+        <td> <%= identity.sei_fee %> </td>
+        <td> <%= identity.sei_eds_fee %> </td>
+        <td> <%= identity.sei_ebsd_fee %> </td>
+        <td> <%= identity.sei_eds_ebsd_fee %> </td>
+        <td> <%= identity.discount_above_30k %> </td>
+        <td> <%= identity.discount_above_40k %> </td>
+        <td> <%= identity.discount_above_60k %> </td>
+        <td> <%= link_to("Edit", 
+                         edit_admin_identity_path(identity), 
+                         :class => "btn btn-sm btn-default")%>
 
-              <%= link_to("Delete", 
-                          admin_identity_path(identity), 
-                          :class => "btn btn-sm btn-default", 
-                          :method=>:delete,
-                          data: { confirm: "Are you sure?" } )%></td> 
+             <%= link_to("Delete", 
+                         admin_identity_path(identity), 
+                         :class => "btn btn-sm btn-default", 
+                         :method=>:delete,
+                         data: { confirm: "Are you sure?" } )%></td> 
       </tr>
       <% end %> 
     </tbody>
