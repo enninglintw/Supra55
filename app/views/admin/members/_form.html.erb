@@ -3,7 +3,8 @@
   電話： <%= f.text_field :tel %> <br />
   <%= f.check_box :education_permitted %> 申請教學資格 <br />
   <%= f.check_box :educated_for_sei %> SEI教學完成 <br />
-  <%= f.check_box :license_for_sei %> SEI執照
+  <%= f.check_box :license_for_sei %> SEI執照 <br />
+  隸屬單位：<%= f.select :org_id, @options %> <br />
 
   <div class="form-actions">
     <%= f.submit "Submit", :disable_with => 'Submiting...', :class => "btn btn-primary"%> 

@@ -29,6 +29,23 @@ class Admin::MembersController < ApplicationController
     # @records = @member.records
   end
 
+  def edit
+    @member = Member.find(params[:id])
+    @options = Org.all.collect do |org|
+      [org.name, org.id]
+    end
+  end
+
+  def update
+    @member = Member.find(params[:id])
+
+    if @member.update(member_params)
+      redirect_to admin_members_path, :notice => '編輯使用者成功！'
+    else
+      render :edit
+    end
+  end
+
 
   private
 
@@ -37,6 +54,7 @@ class Admin::MembersController < ApplicationController
                                     :tel,
                                     :education_permitted,
                                     :educated_for_sei,
-                                    :license_for_sei)
+                                    :license_for_sei,
+                                    :org_id)
   end
 end
