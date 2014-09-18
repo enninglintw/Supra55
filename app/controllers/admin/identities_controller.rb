@@ -1,5 +1,7 @@
 class Admin::IdentitiesController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     @identities = Identity.all
   end
