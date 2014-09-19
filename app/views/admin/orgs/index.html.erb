@@ -25,7 +25,7 @@
         <td> <%= link_to(org.id, admin_org_path(org)) %> </td>
         <td> <%= link_to(org.name, admin_org_path(org)) %> </td>
         <td> <%= org.official_name %> </td>
-        <td> <%= org.identity_id %> </td>
+        <td> <%= org.identity.classification %> </td>
         <td> <%= org.address %> </td>
         <td> <%= org.tel %> </td>
         <td> <%= org.note %> </td>

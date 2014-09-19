@@ -4,23 +4,23 @@ class Admin::RecordsController < ApplicationController
   before_action :admin_required
 
   def index
-    @records = Record.all
+    @records = Record.all.order("start_at DESC")
   end
 
   def new
     @record = Record.new
     
-    @m_options = Member.all.collect do |member|
+    @options = Member.all.collect do |member|
       [member.name, member.id]
     end
 
-    @o_options = Org.all.collect do |org|
-      [org.name, org.id]
-    end
+    # @o_options = Org.all.collect do |org|
+    #   [org.name, org.id]
+    # end
     
-    @i_options = Identity.all.collect do |identity|
-      [identity.classification, identity.id]
-    end
+    # @i_options = Identity.all.collect do |identity|
+    #   [identity.classification, identity.id]
+    # end
   end
 
   def create
@@ -34,19 +34,19 @@ class Admin::RecordsController < ApplicationController
   end
 
   def edit
-    @record = Record.new
+    @record = Record.find(params[:id])
     
-    @m_options = Member.all.collect do |member|
+    @options = Member.all.collect do |member|
       [member.name, member.id]
     end
 
-    @o_options = Org.all.collect do |org|
-      [org.name, org.id]
-    end
+    # @o_options = Org.find(params[:member_id]).collect do |org|
+    #   [org.name, org.id]
+    # end
     
-    @i_options = Identity.all.collect do |identity|
-      [identity.classification, identity.id]
-    end
+    # @i_options = Identity.all.collect do |identity|
+    #   [identity.classification, identity.id]
+    # end
   end
 
   def update
@@ -72,6 +72,10 @@ class Admin::RecordsController < ApplicationController
   def record_params
     params.require(:record).permit(:start_at,
                                    :end_at,
+                                   :sei_hr,
+                                   :sei_eds_hr,
+                                   :sei_ebsd_hr,
+                                   :sei_eds_ebsd_hr,
                                    :identity_id,
                                    :org_id,
                                    :member_id)

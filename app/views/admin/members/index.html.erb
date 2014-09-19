@@ -25,7 +25,7 @@
         <td> <%= link_to(member.id, admin_member_path(member)) %> </td>
         <td> <%= link_to(member.name, admin_member_path(member)) %> </td>
         <td> <%= member.tel %> </td>
-        <td> <%= member.org_id %> </td>
+        <td> <%= member.org.name %> </td>
         <td> <%= member.education_permitted %> </td>
         <td> <%= member.educated_for_sei %> </td>
         <td> <%= member.license_for_sei %> </td>

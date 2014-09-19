@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140918162501) do
+ActiveRecord::Schema.define(version: 20140919031058) do
 
   create_table "identities", force: true do |t|
     t.string   "classification"
@@ -56,6 +56,13 @@ ActiveRecord::Schema.define(version: 20140918162501) do
     t.integer  "member_id"
     t.integer  "identity_id"
     t.integer  "org_id"
+    t.float    "sei_hr"
+    t.float    "sei_eds_hr"
+    t.float    "sei_ebsd_hr"
+    t.float    "sei_eds_ebsd_hr"
+    t.boolean  "payment_notice?"
+    t.boolean  "paid?"
+    t.text     "note"
   end
 
   create_table "users", force: true do |t|

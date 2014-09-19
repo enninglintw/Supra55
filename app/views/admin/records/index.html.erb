@@ -9,26 +9,35 @@
     <thead> 
       <tr>
         <th> # </th>
-        <th> 使用者 </th>
-        <th> 使用單位 </th>
-        <th> 使用者分類 </th>
+        <th colspan="3"> 使用者資料 </th>
+        <th colspan="2"> 時間 </th>
+        <th colspan="5"> 使用時數 </th>
+        <th colspan="7"> 使用費 </th>
+        <th colspan="2"> 其他 </th>
+        <th colspan="2"> </th>
+      </tr>
+      <tr>
+        <th> # </th>
+        <th> 姓名 </th>
+        <th> 單位 </th>
+        <th> 分類 </th>
         <th> 開始時間 </th>
         <th> 結束時間 </th>
         <th> SEI </th>
-        <th> SEI+EDS </th>
-        <th> SEI+EBSD </th>
-        <th> SEI+EDS+EBSD </th>
-        <th> 使用總時數 </th>
-        <th> SEI 費用 </th>
-        <th> SEI + EDS 費用 </th>
-        <th> SEI + EBSD 費用 </th>
-        <th> SEI + EDS + EBSD 費用 </th>
+        <th> SEI + EDS </th>
+        <th> SEI + EBSD </th>
+        <th> SEI + EDS + EBSD </th>
+        <th> 總時數 </th>
+        <th> SEI </th>
+        <th> SEI + EDS </th>
+        <th> SEI + EBSD </th>
+        <th> SEI + EDS + EBSD </th>
         <th> 原價 </th>
         <th> 折扣 </th>
         <th> 總價 </th>
-        <th> 是否已開繳費通知單？ </th>
-        <th> 各使用單位當年度累計金額 </th>
-        <th colspan="2"></th>
+        <th rowspan="2"> 是否已開繳費通知單？ </th>
+        <th rowspan="2"> 各使用單位當年度累計金額 </th>
+        <th colspan="2"> </th>
       </tr>
     </thead>
 
@@ -36,25 +45,25 @@
       <% @records.each do |record| %> 
       <tr>
         <td> <%= link_to(record.id, admin_record_path(record)) %> </td>
-        <td> <%= link_to(record.member.name, "#") %> </td>
-        <td> <%= record.org.name %> </td>
-        <td> <%= record.identity.classification %> </td>
+        <td> <%= link_to(record.member.name, admin_member_path(record.member_id)) %> </td>
+        <td> <%= link_to(org_name(record), admin_org_path(record.member.org_id)) %> </td>
+        <td> <%= link_to(identity_classificaion(record), admin_identity_path(record.member.org.identity_id)) %> </td>
         <td> <%= record.start_at %> </td>
         <td> <%= record.end_at %> </td>
-        <td> <%= "SEI" %> </td>
-        <td> <%= "SEI" %> </td>
-        <td> <%= "SEI" %> </td>
-        <td> <%= "SEI" %> </td>
-        <td> <%= (record.end_at - record.start_at) / 3600 %> </td>
-        <td> <%= record.identity.sei_fee %> </td>
-        <td> <%= record.identity.sei_eds_fee %> </td>
-        <td> <%= record.identity.sei_ebsd_fee %> </td>
-        <td> <%= record.identity.sei_eds_ebsd_fee %> </td>
-        <td> <%= "SEI" %> </td>
-        <td> <%= "SEI" %> </td>
-        <td> <%= "SEI" %> </td>
-        <td> <%= "SEI" %> </td>
-        <td> <%= "SEI" %> </td>
+        <td> <%= record.sei_hr %> </td>
+        <td> <%= record.sei_eds_hr %> </td>
+        <td> <%= record.sei_ebsd_hr %> </td>
+        <td> <%= record.sei_eds_ebsd_hr %> </td>
+        <td> <%= sum_hr(record) %> </td>
+        <td> <%= sei_price(record) %> </td>
+        <td> <%= sei_eds_price(record) %> </td>
+        <td> <%= sei_ebsd_price(record) %> </td>
+        <td> <%= sei_eds_ebsd_price(record) %> </td>
+        <td> <%= original_price(record) %> </td>
+        <td> <%= discount(record) %> </td>
+        <td> <%= sum_price(record) %> </td>
+        <td> <%= "繳費通知單" %> </td>
+        <td> <%= "累計金額" %> </td>
         <td> <%= link_to("Edit", 
                          edit_admin_record_path(record), 
                          :class => "btn btn-sm btn-default")%>
