@@ -6,14 +6,14 @@
   </div>
 
   <table class="table table-hover">
-    <thead> 
+    <thead>
       <tr>
         <th> # </th>
         <th colspan="3"> 使用者資料 </th>
         <th colspan="2"> 時間 </th>
         <th colspan="5"> 使用時數 </th>
         <th colspan="7"> 使用費 </th>
-        <th colspan="2"> 其他 </th>
+        <th colspan="3"> 其他 </th>
         <th colspan="2"> </th>
       </tr>
       <tr>
@@ -35,8 +35,9 @@
         <th> 原價 </th>
         <th> 折扣 </th>
         <th> 總價 </th>
-        <th rowspan="2"> 是否已開繳費通知單？ </th>
-        <th rowspan="2"> 各使用單位當年度累計金額 </th>
+        <th> 是否已開繳費通知單？ </th>
+        <th> 是否已繳費？ </th>
+        <th> 各使用單位當年度累計金額 </th>
         <th colspan="2"> </th>
       </tr>
     </thead>
@@ -48,8 +49,8 @@
         <td> <%= link_to(record.member.name, admin_member_path(record.member_id)) %> </td>
         <td> <%= link_to(org_name(record), admin_org_path(record.member.org_id)) %> </td>
         <td> <%= link_to(identity_classificaion(record), admin_identity_path(record.member.org.identity_id)) %> </td>
-        <td> <%= record.start_at %> </td>
-        <td> <%= record.end_at %> </td>
+        <td> <%= render_record_start_at(record) %> </td>
+        <td> <%= render_record_end_at(record) %> </td>
         <td> <%= record.sei_hr %> </td>
         <td> <%= record.sei_eds_hr %> </td>
         <td> <%= record.sei_ebsd_hr %> </td>
@@ -62,17 +63,17 @@
         <td> <%= original_price(record) %> </td>
         <td> <%= discount(record) %> </td>
         <td> <%= sum_price(record) %> </td>
-        <td> <%= "繳費通知單" %> </td>
-        <td> <%= "累計金額" %> </td>
+        <td> <%= record.payment_notice? %> </td>
+        <td> <%= record.paid? %> </td>
+        <td> <%= sum_price_of_the_member(record) %> </td>
         <td> <%= link_to("Edit", 
                          edit_admin_record_path(record), 
                          :class => "btn btn-sm btn-default")%>
-
              <%= link_to("Delete", 
                          admin_record_path(record), 
                          :class => "btn btn-sm btn-default", 
                          :method => :delete,
-                         data: { confirm: "Are you sure?" } )%></td> 
+                         data: { confirm: "Are you sure?" } )%> </td> 
       </tr>
       <% end %> 
     </tbody>

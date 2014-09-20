@@ -1,11 +1,19 @@
 module Admin::RecordsHelper
 
   def org_name(record)
-    record.member.org.name
+    record.org.name
   end
 
   def identity_classificaion(record)
-    record.member.org.identity.classification
+    record.identity.classification
+  end
+
+  def render_record_start_at(record)
+    record.start_at.to_s(:db)
+  end
+
+  def render_record_end_at(record)
+    record.end_at.to_s(:db)
   end
 
   def sum_hr(record)
@@ -17,35 +25,35 @@ module Admin::RecordsHelper
   end
 
   def sei_price(record)
-    record.member.org.identity.sei_fee * record.sei_hr
+    record.identity.sei_fee * record.sei_hr
   end
 
   def sei_eds_price(record)
-    record.member.org.identity.sei_eds_fee * record.sei_eds_hr
+    record.identity.sei_eds_fee * record.sei_eds_hr
   end
 
   def sei_ebsd_price(record)
-    record.member.org.identity.sei_ebsd_fee * record.sei_ebsd_hr
+    record.identity.sei_ebsd_fee * record.sei_ebsd_hr
   end
 
   def sei_eds_ebsd_price(record)
-    record.member.org.identity.sei_eds_ebsd_fee * record.sei_eds_ebsd_hr
+    record.identity.sei_eds_ebsd_fee * record.sei_eds_ebsd_hr
   end
 
   def original_price(record)
-    record.member.org.identity.sei_fee * record.sei_hr + 
-    record.member.org.identity.sei_eds_fee * record.sei_eds_hr +
-    record.member.org.identity.sei_ebsd_fee * record.sei_ebsd_hr +
-    record.member.org.identity.sei_eds_ebsd_fee * record.sei_eds_ebsd_hr
+    sei_price(record) + 
+    sei_eds_price(record) +
+    sei_ebsd_price(record) +
+    sei_eds_ebsd_price(record)
   end
 
   def discount(record)
     if original_price(record) >= 6000
-      record.member.org.identity.discount_above_60k
+      record.identity.discount_above_60k
     elsif original_price(record) >= 4000
-      record.member.org.identity.discount_above_40k
+      record.identity.discount_above_40k
     elsif original_price(record) >= 3000
-      record.member.org.identity.discount_above_30k
+      record.identity.discount_above_30k
     else
       1
     end
@@ -53,6 +61,10 @@ module Admin::RecordsHelper
 
   def sum_price(record)
     original_price(record) * discount(record)
+  end
+
+  def sum_price_of_the_member(record)
+    "累計金額"
   end
 
 end

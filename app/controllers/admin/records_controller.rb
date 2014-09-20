@@ -4,7 +4,7 @@ class Admin::RecordsController < ApplicationController
   before_action :admin_required
 
   def index
-    @records = Record.all.order("start_at DESC")
+    @records = Record.all.order("start_at")
   end
 
   def new
@@ -27,6 +27,9 @@ class Admin::RecordsController < ApplicationController
     @record = Record.new(record_params)
 
     if @record.save
+      @record.org_id = @record.member.org_id
+      @record.identity_id = @record.member.org.identity_id
+      @record.save
       redirect_to admin_records_path, :notice => '新增使用記錄成功！'
     else
       render :new
@@ -53,6 +56,9 @@ class Admin::RecordsController < ApplicationController
     @record = Record.find(params[:id])
 
     if @record.update(record_params)
+      @record.org_id = @record.member.org_id
+      @record.identity_id = @record.member.org.identity_id
+      @record.save
       redirect_to admin_records_path, :notice => '編輯使用記錄成功！'
     else
       render :edit

@@ -16,7 +16,7 @@ class Admin::MembersController < ApplicationController
 
   def create
     @member = Member.new(member_params)
-
+    
     if @member.save
       redirect_to admin_members_path, :notice => '新增使用者成功！'
     else
