@@ -10,42 +10,10 @@
   <p> 電話： <%= @org.tel %> </p>
   <p> 備註： <%= @org.note %> </p>
   
-  <%= link_to("新增使用者", new_admin_member_path, :class => "btn btn-primary pull-right")%>
+  <div class="member">
+    <%= link_to("新增使用者", new_admin_member_path, :class => "btn btn-primary pull-right")%>
+  </div>
+  
   <h3>使用者</h3>
-
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th> # </th>
-        <th> 姓名 </th>
-        <th> 電話 </th>
-        <th> 申請教學資格 </th>
-        <th> SEI教學完成 </th>
-        <th> SEI執照 </th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @members.each do |member| %> 
-      <tr>
-        <td> <%= link_to(member.id, admin_member_path(member)) %> </td>
-        <td> <%= link_to(member.name, admin_member_path(member)) %> </td>
-        <td> <%= member.tel %> </td>
-        <td> <%= member.education_permitted %> </td>
-        <td> <%= member.educated_for_sei %> </td>
-        <td> <%= member.license_for_sei %> </td>
-        <td> <%= link_to("Edit", 
-                         edit_admin_member_path(member), 
-                         :class => "btn btn-sm btn-default")%>
-
-             <%= link_to("Delete", 
-                         admin_member_path(member), 
-                         :class => "btn btn-sm btn-default", 
-                         :method => :delete,
-                         data: { confirm: "Are you sure?" } )%></td> 
-      </tr>
-      <% end %> 
-    </tbody>
-  </table>
+  <%= render "admin/members/members_list" %>
 </div>
