@@ -82,8 +82,8 @@ class Admin::RecordsController < ApplicationController
                                    :sei_eds_hr,
                                    :sei_ebsd_hr,
                                    :sei_eds_ebsd_hr,
-                                   :identity_id,
-                                   :org_id,
+                                   :payment_notice,
+                                   :paid,
                                    :member_id)
   end
 end

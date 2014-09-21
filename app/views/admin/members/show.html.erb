@@ -65,9 +65,9 @@
         <td> <%= original_price(record) %> </td>
         <td> <%= discount(record) %> </td>
         <td> <%= sum_price(record) %> </td>
-        <td> <%= record.payment_notice? %> </td>
-        <td> <%= record.paid? %> </td>
-        <td> <%= "sum_price_of_the_member(record)" %> </td>
+        <td> <%= record.payment_notice %> </td>
+        <td> <%= record.paid %> </td>
+        <td> <%= sum_price_of_the_member(record) %> </td>
         <td> <%= link_to("Edit", 
                          edit_admin_record_path(record), 
                          :class => "btn btn-sm btn-default")%>

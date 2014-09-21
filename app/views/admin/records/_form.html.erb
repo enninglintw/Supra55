@@ -11,8 +11,8 @@
   SEI + EDS：<%= f.number_field :sei_eds_hr, :step => 0.5 %> <br />
   SEI + EBSD：<%= f.number_field :sei_ebsd_hr, :step => 0.5 %> <br />
   SEI + EDS + EBSD：<%= f.number_field :sei_eds_ebsd_hr, :step => 0.5 %> <br />
-  <%= f.check_box :payment_notice? %> 是否已開繳費通知單？ <br />
-  <%= f.check_box :paid? %> 是否已繳費？ <br />
+  <%= f.check_box :payment_notice %> 是否已開繳費通知單？ <br />
+  <%= f.check_box :paid %> 是否已繳費？ <br />
 
   <div class="form-actions">
     <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%> 
