@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140920144624) do
+ActiveRecord::Schema.define(version: 20140921104523) do
 
   create_table "identities", force: true do |t|
     t.string   "classification"
@@ -35,7 +35,11 @@ ActiveRecord::Schema.define(version: 20140920144624) do
     t.boolean  "license_for_sei"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "identity_id"
   end
+
+  add_index "members", ["identity_id"], name: "index_members_on_identity_id"
+  add_index "members", ["org_id"], name: "index_members_on_org_id"
 
   create_table "orgs", force: true do |t|
     t.string   "name"
@@ -47,6 +51,8 @@ ActiveRecord::Schema.define(version: 20140920144624) do
     t.text     "note"
     t.integer  "identity_id"
   end
+
+  add_index "orgs", ["identity_id"], name: "index_orgs_on_identity_id"
 
   create_table "records", force: true do |t|
     t.datetime "start_at"
@@ -64,6 +70,10 @@ ActiveRecord::Schema.define(version: 20140920144624) do
     t.boolean  "paid"
     t.text     "note"
   end
+
+  add_index "records", ["identity_id"], name: "index_records_on_identity_id"
+  add_index "records", ["member_id"], name: "index_records_on_member_id"
+  add_index "records", ["org_id"], name: "index_records_on_org_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
