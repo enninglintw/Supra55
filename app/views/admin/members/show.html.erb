@@ -6,7 +6,7 @@
   <h2> <%= @member.name %> </h2>
   <p> 電話： <%= @member.tel %> </p>
   <p> 隸屬單位： <%= @member.org.name %> </p>
-  <p> 分類： <%= @member.org.identity.classification %> </p>
+  <p> 收費標準： <%= @member.org.identity.classification %> </p>
   <p> 申請教學資格： <%= @member.education_permitted %> </p>
   <p> SEI教學完成： <%= @member.educated_for_sei %> </p>
   <p> SEI執照： <%= @member.license_for_sei %> </p>
@@ -26,6 +26,9 @@
       </tr>
       <tr>
         <th> # </th>
+        <th> 姓名 </th>
+        <th> 單位 </th>
+        <th> 收費標準 </th>
         <th> 開始時間 </th>
         <th> 結束時間 </th>
         <th> SEI </th>
@@ -51,6 +54,9 @@
       <% @records.each do |record| %>
       <tr>
         <td> <%= record.id %> </td>
+        <td> <%= link_to(record.member.name, admin_member_path(record.member_id)) %> </td>
+        <td> <%= link_to(org_name(record), admin_org_path(record.member.org_id)) %> </td>
+        <td> <%= link_to(identity_classificaion(record), admin_identity_path(record.member.org.identity_id)) %> </td>
         <td> <%= render_record_start_at(record) %> </td>
         <td> <%= render_record_end_at(record) %> </td>
         <td> <%= record.sei_hr %> </td>

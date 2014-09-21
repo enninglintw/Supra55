@@ -15,7 +15,7 @@ class Admin::IdentitiesController < ApplicationController
     @identity = Identity.new(identity_params)
 
     if @identity.save
-      redirect_to admin_identities_path, :notice => '新增分類成功！'
+      redirect_to admin_identities_path, :notice => '新增收費標準成功！'
     else
       render :new
     end
@@ -34,7 +34,7 @@ class Admin::IdentitiesController < ApplicationController
     @identity = Identity.find(params[:id])
 
     if @identity.update(identity_params)
-      redirect_to admin_identities_path, :notice => '編輯分類成功！'
+      redirect_to admin_identities_path, :notice => '編輯收費標準成功！'
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class Admin::IdentitiesController < ApplicationController
     @identity = Identity.find(params[:id])
 
     @identity.destroy
-    redirect_to admin_identities_path, :alert => '分類已刪除！'
+    redirect_to admin_identities_path, :alert => '收費標準已刪除！'
   end
 
 

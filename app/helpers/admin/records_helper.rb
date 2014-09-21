@@ -17,11 +17,18 @@ module Admin::RecordsHelper
   end
 
   def sum_hr(record)
-    # (record.end_at - record.start_at) / 3600
-    record.sei_hr + 
+    if (record.end_at - record.start_at) / 3600 == 
+    (record.sei_hr + 
     record.sei_eds_hr + 
     record.sei_ebsd_hr + 
-    record.sei_eds_ebsd_hr
+    record.sei_eds_ebsd_hr)
+      record.sei_hr + 
+      record.sei_eds_hr + 
+      record.sei_ebsd_hr + 
+      record.sei_eds_ebsd_hr
+    else
+      "使用時數不符！"
+    end
   end
 
   def sei_price(record)

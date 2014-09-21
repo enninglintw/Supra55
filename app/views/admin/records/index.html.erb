@@ -10,8 +10,8 @@
       <tr>
         <th> # </th>
         <th colspan="3"> 使用者資料 </th>
-        <th colspan="2"> 時間 </th>
-        <th colspan="5"> 使用時數 </th>
+        <th colspan="3"> 時間 </th>
+        <th colspan="4"> 使用時數 </th>
         <th colspan="7"> 使用費 </th>
         <th colspan="3"> 其他 </th>
         <th colspan="2"> </th>
@@ -20,14 +20,14 @@
         <th> # </th>
         <th> 姓名 </th>
         <th> 單位 </th>
-        <th> 分類 </th>
+        <th> 收費標準 </th>
         <th> 開始時間 </th>
         <th> 結束時間 </th>
+        <th> 總時數 </th>
         <th> SEI </th>
         <th> SEI + EDS </th>
         <th> SEI + EBSD </th>
         <th> SEI + EDS + EBSD </th>
-        <th> 總時數 </th>
         <th> SEI </th>
         <th> SEI + EDS </th>
         <th> SEI + EBSD </th>
@@ -51,11 +51,11 @@
         <td> <%= link_to(identity_classificaion(record), admin_identity_path(record.member.org.identity_id)) %> </td>
         <td> <%= render_record_start_at(record) %> </td>
         <td> <%= render_record_end_at(record) %> </td>
+        <td> <%= sum_hr(record) %> </td>
         <td> <%= record.sei_hr %> </td>
         <td> <%= record.sei_eds_hr %> </td>
         <td> <%= record.sei_ebsd_hr %> </td>
         <td> <%= record.sei_eds_ebsd_hr %> </td>
-        <td> <%= sum_hr(record) %> </td>
         <td> <%= sei_price(record) %> </td>
         <td> <%= sei_eds_price(record) %> </td>
         <td> <%= sei_ebsd_price(record) %> </td>

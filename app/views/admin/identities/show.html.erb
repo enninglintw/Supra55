@@ -1,8 +1,8 @@
 <div class="col-md-12">
   <div class="identity">
-    <%= link_to("編輯分類", edit_admin_identity_path(@identity), :class => "btn btn-primary pull-right")%> 
+    <%= link_to("編輯收費標準", edit_admin_identity_path(@identity), :class => "btn btn-primary pull-right")%> 
   </div>
-  <h1> 分類 </h1>
+  <h1> 收費標準 </h1>
   <h2> <%= @identity.classification %> </h2>
   <p> SEI 費用： <%= @identity.sei_fee %> </p>
   <p> SEI + EDS 費用： <%= @identity.sei_eds_fee %> </p>

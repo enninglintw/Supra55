@@ -4,6 +4,7 @@
   </div>
   <h1> 使用單位 </h1>
   <h2> <%= @org.name %> </h2>
+  <p> 收費標準： <%= link_to(@org.identity.classification, admin_identity_path(@org.identity_id)) %> </p>
   <p> 全名： <%= @org.official_name %> </p>
   <p> 地址： <%= @org.address %> </p>
   <p> 電話： <%= @org.tel %> </p>
