@@ -5,9 +5,9 @@
         <th> # </th>
         <th> 名稱 </th>
         <th> 全名 </th>
-        <th> 地址 </th>
-        <th> 電話 </th>
         <th> 收費標準 </th>
+        <th> 電話 </th>
+        <th> 地址 </th>
         <th> 備註 </th>
       </tr>
     </thead>
@@ -18,9 +18,9 @@
         <td>  <%= link_to(org.id, org_path(org)) %> </td>
         <td>  <%= link_to(org.name, org_path(org)) %> </td>
         <td>  <%= org.official_name %> </td>
-        <td>  <%= org.address %> </td>
+        <td>  <%= org.identity.classification %> </td>
         <td>  <%= org.tel %> </td>
-        <td>  <%= org.identity_id %> </td>
+        <td>  <%= org.address %> </td>
         <td>  <%= org.note %> </td>
         <td>  <%= link_to("Edit", 
                           edit_org_path(org), 
