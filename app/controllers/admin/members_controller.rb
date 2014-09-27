@@ -44,7 +44,6 @@ class Admin::MembersController < ApplicationController
     if @member.update(member_params)
       @member.identity_id = @member.org.identity_id
       @member.save
-
       redirect_to admin_members_path, :notice => '編輯使用者成功！'
     else
       render :edit
@@ -64,6 +63,7 @@ class Admin::MembersController < ApplicationController
   def member_params
     params.require(:member).permit(:name,
                                    :tel,
+                                   :email,
                                    :education_permitted,
                                    :educated_for_sei,
                                    :license_for_sei,

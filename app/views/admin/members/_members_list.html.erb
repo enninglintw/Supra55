@@ -4,6 +4,7 @@
       <th>#</th>
       <th>姓名</th>
       <th>電話</th>
+      <th>帳號</th>
       <th>email</th>
       <th>隸屬單位</th>
       <th>收費標準</th>
@@ -20,6 +21,9 @@
       <td> <%= link_to(member.id, admin_member_path(member)) %> </td>
       <td> <%= link_to(hide_member_name(member), admin_member_path(member)) %> </td>
       <td> <%= member.tel %> </td>
+      <td> <% if User.find_by(name: member.name).present? %>
+             <%= "有帳號" %>
+           <% end %> </td>
       <td> <%= member.email %> </td>
       <td> <%= link_to(member.org.name, admin_org_path(member.org_id)) %> </td>
       <td> <%= link_to(member.identity.classification, admin_identity_path(member.identity_id)) %> </td>
