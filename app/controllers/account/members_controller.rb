@@ -21,6 +21,20 @@ class Account::MembersController < ApplicationController
     end
   end
 
+  def edit
+    @member = @org.members.find(params[:id])
+  end
+
+  def update
+    @member = @org.members.find(params[:id])
+
+    if @member.update(member_params)
+      redirect_to account_members_path, :notice => '編輯使用者成功！'
+    else
+      render :edit  
+    end
+  end
+
 
   private
 
