@@ -6,14 +6,21 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li> <%= link_to("收費標準", admin_identities_path) %> </li>
+    <div class="collapse navbar-collapse navbar-left">
+      <ol class="breadcrumb">
+        <li> Admin <%= link_to("收費標準", admin_identities_path) %> </li>
         <li> <%= link_to("所有使用單位", admin_orgs_path) %> </li>
         <li> <%= link_to("所有使用者", admin_members_path) %> </li>
         <li> <%= link_to("所有使用記錄", admin_records_path) %> </li>
-        <li> <%= link_to("同使用單位的所有使用者", account_members_path) %> </li>
-      </ul>
+      </ol>
+      <ol class="breadcrumb">
+        <li> Account <%= link_to("收費標準", account_identities_path) %> </li>
+        <li> <%= link_to("我的使用單位", account_orgs_path) %> </li>
+        <li> <%= link_to("使用單位的所有使用者", account_members_path) %> </li>
+        <li> <%= link_to("使用單位的所有使用記錄", account_records_path) %> </li>
+      </ol>
+    </div>
+    <div>
       <ul class="nav navbar-nav navbar-right">
         <% if !current_user %>
           <li> <%= link_to("註冊", new_user_registration_path) %> </li>
