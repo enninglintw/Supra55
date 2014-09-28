@@ -1,0 +1,11 @@
+<div class="col-md-12">
+  <h1> 收費標準 </h1>
+  <h2> <%= @identity.classification %> </h2>
+  <p> SEI 費用： <%= @identity.sei_fee %> </p>
+  <p> SEI + EDS 費用： <%= @identity.sei_eds_fee %> </p>
+  <p> SEI + EBSD 費用： <%= @identity.sei_ebsd_fee %> </p>
+  <p> SEI + EDS + EBSD 費用： <%= @identity.sei_eds_ebsd_fee %> </p>
+  <p> 年使用費滿3萬折扣： <%= @identity.discount_above_30k %> </p>
+  <p> 年使用費滿4萬折扣： <%= @identity.discount_above_40k %> </p>
+  <p> 年使用費滿6萬折扣： <%= @identity.discount_above_60k %> </p>
+</div>
