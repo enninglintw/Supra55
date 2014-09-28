@@ -30,10 +30,10 @@
                        edit_account_member_path(member), 
                        :class => "btn btn-sm btn-default")%>
 
-           <%= link_to("Delete", 
-                       account_member_path(member), 
+           <%= link_to("從使用單位移除", 
+                       remove_from_org_account_member_path(member), 
                        :class => "btn btn-sm btn-default", 
-                       :method => :delete,
+                       :method => :patch,
                        data: { confirm: "Are you sure?" } )%></td> 
     </tr>
     <% end %> 

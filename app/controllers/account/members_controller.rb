@@ -35,6 +35,15 @@ class Account::MembersController < ApplicationController
     end
   end
 
+  def remove_from_org
+    @member = @org.members.find(params[:id])
+
+    @member.org_id = 13
+    @member.identity_id = 6
+    @member.save
+    redirect_to account_members_path, :alert => '使用者已刪除！'
+  end
+
 
   private
 
