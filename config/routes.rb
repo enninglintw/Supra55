@@ -7,6 +7,13 @@ Rails.application.routes.draw do
     resources :records
   end
 
+  namespace :account do
+    resources :identities
+    resources :orgs
+    resources :members
+    resources :records
+  end
+
   devise_for :users
   
   resources :orgs do

@@ -1,0 +1,9 @@
+<%= form_for [:account, @member] do |f| %>
+  姓名： <%= f.text_field :name %> <br />
+  電話： <%= f.text_field :tel %> <br />
+  email： <%= f.text_field :email %> <br />
+  
+  <div class="form-actions">
+    <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%> 
+  </div>
+<% end %> 
