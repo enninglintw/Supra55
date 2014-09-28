@@ -1,0 +1,10 @@
+<%= form_for [:account, @org] do |f| %>
+  名稱：<%= f.text_field :name %> <br />
+  全名：<%= f.text_area :official_name %> <br />
+  地址：<%= f.text_area :address %> <br />
+  電話：<%= f.text_area :tel %> <br />
+
+  <div class="form-actions">
+    <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%>
+  </div>
+<% end %> 

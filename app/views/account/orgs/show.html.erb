@@ -1,0 +1,18 @@
+<div class="col-md-12">
+  <div class="org">
+    <%= link_to("編輯使用單位", edit_account_org_path(@org), :class => "btn btn-primary pull-right")%> 
+  </div>
+  <h1> 使用單位 </h1>
+  <h2> <%= @org.name %> </h2>
+  <p> 收費標準： <%= link_to(@org.identity.classification, account_identity_path(@org.identity_id)) %> </p>
+  <p> 全名： <%= @org.official_name %> </p>
+  <p> 地址： <%= @org.address %> </p>
+  <p> 電話： <%= @org.tel %> </p>
+  
+  <div class="member">
+    <%= link_to("新增使用者", new_account_member_path, :class => "btn btn-primary pull-right") %>
+  </div>
+  
+  <h3>使用者</h3>
+  <%= render "account/members/members_list" %>
+</div>

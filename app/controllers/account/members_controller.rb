@@ -21,6 +21,11 @@ class Account::MembersController < ApplicationController
     end
   end
 
+  def show
+    @member = @org.members.find(params[:id])
+    @records = @member.records
+  end
+
   def edit
     @member = @org.members.find(params[:id])
   end
