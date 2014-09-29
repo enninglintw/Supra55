@@ -12,8 +12,8 @@
         <th> 名稱 </th>
         <th> 全名 </th>
         <th> 收費標準 </th>
-        <th> 地址 </th>
         <th> 電話 </th>
+        <th> 地址 </th>
         <th> 備註 </th>
         <th colspan="2"></th>
       </tr>
@@ -26,8 +26,8 @@
         <td> <%= link_to(org.name, admin_org_path(org)) %> </td>
         <td> <%= org.official_name %> </td>
         <td> <%= link_to(org.identity.classification, admin_identity_path(org.identity_id)) %> </td>
-        <td> <%= org.address %> </td>
         <td> <%= org.tel %> </td>
+        <td> <%= org.address %> </td>
         <td> <%= org.note %> </td>
         <td> <%= link_to("Edit", 
                          edit_admin_org_path(org), 

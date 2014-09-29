@@ -7,23 +7,19 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-left">
-      <% if !current_user %>
-      <% else %>
-        <ol class="breadcrumb">
+      <% if current_user %>
+        <ul class="nav navbar-nav">
           <li> Account </li>
           <li> <%= link_to("我的使用單位及所有使用者", account_org_path(current_user.member.org_id)) %> </li>
           <li> <%= link_to("使用單位的使用記錄", "#") %> </li>
           <li> <%= link_to("我的使用記錄", "#") %> </li>
-        </ol>
         <% if current_user.is_admin? %>
-          <ol class="breadcrumb">
-            <li> Admin </li>
-            <li> <%= link_to("收費標準", admin_identities_path) %> </li>
-            <li> <%= link_to("所有使用單位", admin_orgs_path) %> </li>
-            <li> <%= link_to("所有使用者", admin_members_path) %> </li>
-            <li> <%= link_to("所有使用記錄", admin_records_path) %> </li>
-          </ol>
-        <% else %>
+          <li> Admin </li>
+          <li> <%= link_to("收費標準", admin_identities_path) %> </li>
+          <li> <%= link_to("所有使用單位", admin_orgs_path) %> </li>
+          <li> <%= link_to("所有使用者", admin_members_path) %> </li>
+          <li> <%= link_to("所有使用記錄", admin_records_path) %> </li>
+        </ul>
         <% end %>
       <% end %>
     </div>

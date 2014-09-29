@@ -17,7 +17,7 @@
     <% @members.each do |member| %>
     <tr>
       <td> <%= link_to(member.id, account_member_path(member)) %> </td>
-      <td> <%= link_to(hide_member_name(member), account_member_path(member)) %> </td>
+      <td> <%= link_to(member.name, account_member_path(member)) %> </td>
       <td> <%= member.tel %> </td>
       <td> <% if User.find_by(name: member.name).present? %>
              <%= "有帳號" %>
