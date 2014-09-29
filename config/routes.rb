@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+
   namespace :admin do
     resources :identities
     resources :orgs
@@ -16,8 +18,11 @@ Rails.application.routes.draw do
     resources :records
   end
 
-  devise_for :users
+  resources :reservations do
+    get 'welcome', on: :collection
+  end
 
+  root 'reservations#welcome'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
