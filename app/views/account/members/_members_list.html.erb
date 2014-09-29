@@ -28,13 +28,12 @@
       <td> <%= member.license_for_sei %> </td>
       <td> <%= link_to("Edit", 
                        edit_account_member_path(member), 
-                       :class => "btn btn-sm btn-default")%>
-
+                       :class => "glyphicon glyphicon-edit")%>
            <%= link_to("從使用單位移除", 
                        remove_from_org_account_member_path(member), 
-                       :class => "btn btn-sm btn-default", 
+                       :class => "glyphicon glyphicon-trash", 
                        :method => :patch,
-                       data: { confirm: "Are you sure?" } )%></td> 
+                       data: { confirm: "Are you sure?" } )%> </td> 
     </tr>
     <% end %> 
   </tbody>

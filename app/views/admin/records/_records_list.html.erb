@@ -61,10 +61,10 @@
       <td> <%= sum_price_of_the_member(record) %> </td>
       <td> <%= link_to("Edit", 
                        edit_admin_record_path(record), 
-                       :class => "btn btn-sm btn-default")%>
+                       :class => "glyphicon glyphicon-edit")%>
            <%= link_to("Delete", 
                        admin_record_path(record), 
-                       :class => "btn btn-sm btn-default", 
+                       :class => "glyphicon glyphicon-trash", 
                        :method => :delete,
                        data: { confirm: "Are you sure?" } )%> </td> 
     </tr>

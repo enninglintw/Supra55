@@ -35,11 +35,10 @@
         <td> <%= identity.discount_above_60k %> </td>
         <td> <%= link_to("Edit", 
                          edit_admin_identity_path(identity), 
-                         :class => "btn btn-sm btn-default")%>
-
+                         :class => "glyphicon glyphicon-edit")%>
              <%= link_to("Delete", 
                          admin_identity_path(identity), 
-                         :class => "btn btn-sm btn-default", 
+                         :class => "glyphicon glyphicon-trash", 
                          :method=>:delete,
                          data: { confirm: "Are you sure?" } )%></td> 
       </tr>
