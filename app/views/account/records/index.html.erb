@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-12"> 
   <div class="org">
     <%= link_to("編輯使用單位", edit_account_org_path(@org), :class => "btn btn-primary pull-right")%> 
   </div>
@@ -8,11 +8,7 @@
   <p> 全名： <%= @org.official_name %> </p>
   <p> 地址： <%= @org.address %> </p>
   <p> 電話： <%= @org.tel %> </p>
-  
-  <div class="member">
-    <%= link_to("新增使用者", new_account_member_path, :class => "btn btn-primary pull-right") %>
-  </div>
-  
-  <h3> 所有使用者 </h3>
-  <%= render "account/members/members_list" %>
+
+  <h3> 所有使用記錄 </h3>
+  <%= render "records_list" %>
 </div>

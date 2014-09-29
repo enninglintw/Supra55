@@ -1,6 +1,6 @@
 <div class="col-md-12">
   <div class="member">
-    <%= link_to("編輯使用者", edit_admin_member_path(@member), :class => "btn btn-primary pull-right")%> 
+    <%= link_to("編輯使用者", edit_account_member_path(@member), :class => "btn btn-primary pull-right")%> 
   </div>
   <h1> 使用者 </h1>
   <h2> <%= @member.name %> </h2>
@@ -11,11 +11,7 @@
   <p> SEI教學完成： <%= @member.educated_for_sei %> </p>
   <p> SEI執照： <%= @member.license_for_sei %> </p>
  
-
-  <div class="record">
-    <%= link_to("新增使用記錄", new_admin_record_path, :class => "btn btn-primary pull-right")%>
-  </div>
-  <h3> 使用記錄 </h3>
-  <%= render "admin/records/records_list" %>
+  <h3> 我的使用記錄 </h3>
+  <%= render "account/records/records_list" %>
 
 </div>
