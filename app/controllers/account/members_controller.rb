@@ -43,10 +43,11 @@ class Account::MembersController < ApplicationController
   def remove_from_org
     @member = @org.members.find(params[:id])
 
+    # FIXME: set undefined org_id as sth else
     @member.org_id = 13
-    @member.identity_id = 6
+    @member.identity_id = @member.org.identity_id
     @member.save
-    redirect_to account_members_path, :alert => '使用者已刪除！'
+    redirect_to account_members_path, :alert => '使用者已移除！'
   end
 
 

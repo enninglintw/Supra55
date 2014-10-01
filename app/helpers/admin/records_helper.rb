@@ -5,7 +5,7 @@ module Admin::RecordsHelper
   end
 
   def identity_classificaion(record)
-    record.identity.classification
+    record.org.identity.classification
   end
 
   def render_record_start_at(record)
@@ -32,19 +32,19 @@ module Admin::RecordsHelper
   end
 
   def sei_price(record)
-    record.identity.sei_fee * record.sei_hr
+    record.org.identity.sei_fee * record.sei_hr
   end
 
   def sei_eds_price(record)
-    record.identity.sei_eds_fee * record.sei_eds_hr
+    record.org.identity.sei_eds_fee * record.sei_eds_hr
   end
 
   def sei_ebsd_price(record)
-    record.identity.sei_ebsd_fee * record.sei_ebsd_hr
+    record.org.identity.sei_ebsd_fee * record.sei_ebsd_hr
   end
 
   def sei_eds_ebsd_price(record)
-    record.identity.sei_eds_ebsd_fee * record.sei_eds_ebsd_hr
+    record.org.identity.sei_eds_ebsd_fee * record.sei_eds_ebsd_hr
   end
 
   def original_price(record)
@@ -56,11 +56,11 @@ module Admin::RecordsHelper
 
   def discount(record)
     if original_price(record) >= 6000
-      record.identity.discount_above_60k
+      record.org.identity.discount_above_60k
     elsif original_price(record) >= 4000
-      record.identity.discount_above_40k
+      record.org.identity.discount_above_40k
     elsif original_price(record) >= 3000
-      record.identity.discount_above_30k
+      record.org.identity.discount_above_30k
     else
       1
     end

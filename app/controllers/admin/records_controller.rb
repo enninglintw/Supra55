@@ -34,14 +34,6 @@ class Admin::RecordsController < ApplicationController
     @options = Member.all.collect do |member|
       [member.name, member.id]
     end
-
-    # @o_options = Org.find(params[:member_id]).collect do |org|
-    #   [org.name, org.id]
-    # end
-    
-    # @i_options = Identity.all.collect do |identity|
-    #   [identity.classification, identity.id]
-    # end
   end
 
   def update

@@ -39,8 +39,20 @@
     <tr>
       <td> <%= link_to(record.id, account_record_path(record)) %> </td>
       <td> <%= link_to(record.member.name, account_member_path(record.member_id)) %> </td>
-      <td> <%= link_to(org_name(record), account_org_path(record.member.org_id)) %> </td>
-      <td> <%= link_to(identity_classificaion(record), account_identity_path(record.member.org.identity_id)) %> </td>
+
+      <!-- FIXME: 
+      sign in by 王光國 /account/records/ 裡的實驗記錄有不同單位
+      但連結只會顯示現在的使用單位
+      可能是因為account/members_controller裡的find_org
+      def find_org
+        @org = Org.find_by(id: current_user.member.org_id)
+      end -->
+      <td> <% if record.org_id == current_user.member.org_id %>
+             <%= link_to(org_name(record), account_org_path(record.org_id)) %>
+           <% else %>
+             <%= org_name(record) %>
+           <% end %> </td>
+      <td> <%= link_to(identity_classificaion(record), account_identity_path(record.org.identity_id)) %> </td>
       <td> <%= render_record_start_at(record) %> </td>
       <td> <%= render_record_end_at(record) %> </td>
       <td> <%= sum_hr(record) %> </td>

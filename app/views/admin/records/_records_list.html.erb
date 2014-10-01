@@ -40,8 +40,8 @@
     <tr>
       <td> <%= link_to(record.id, admin_record_path(record)) %> </td>
       <td> <%= link_to(record.member.name, admin_member_path(record.member_id)) %> </td>
-      <td> <%= link_to(org_name(record), admin_org_path(record.member.org_id)) %> </td>
-      <td> <%= link_to(identity_classificaion(record), admin_identity_path(record.member.org.identity_id)) %> </td>
+      <td> <%= link_to(org_name(record), admin_org_path(record.org_id)) %> </td>
+      <td> <%= link_to(identity_classificaion(record), admin_identity_path(record.org.identity_id)) %> </td>
       <td> <%= render_record_start_at(record) %> </td>
       <td> <%= render_record_end_at(record) %> </td>
       <td> <%= sum_hr(record) %> </td>

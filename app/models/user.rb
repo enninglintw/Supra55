@@ -6,11 +6,7 @@ class User < ActiveRecord::Base
 
   has_one :member
 
-  validates :org_id, :presence => true
-
-  after_create :find_and_bind_member
-  after_update :update_user_and_member
-
+  after_save :find_and_bind_member
 
   protected
 
@@ -23,18 +19,5 @@ class User < ActiveRecord::Base
       Member.create(name: name, email: email, user_id: id)
     end
   end
-
-  def update_user_and_member
-    exists_member = Member.find_by(name: name)
-    exists_member.update(email: email, user_id: id)
-  end
-
-  # @o_options = Org.all.collect do |org|
-  #   [org.name, org.id]
-  # end
-
-  # @i_options = Identity.all.collect do |identity|
-  #   [identity.classification, identity.id]
-  # end
 
 end

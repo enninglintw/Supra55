@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140930115705) do
+ActiveRecord::Schema.define(version: 20141001084901) do
 
   create_table "identities", force: true do |t|
     t.string   "classification"
@@ -35,12 +35,10 @@ ActiveRecord::Schema.define(version: 20140930115705) do
     t.boolean  "license_for_sei"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "identity_id"
     t.integer  "user_id"
     t.string   "email"
   end
 
-  add_index "members", ["identity_id"], name: "index_members_on_identity_id"
   add_index "members", ["org_id"], name: "index_members_on_org_id"
   add_index "members", ["user_id"], name: "index_members_on_user_id"
 
@@ -63,7 +61,6 @@ ActiveRecord::Schema.define(version: 20140930115705) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "member_id"
-    t.integer  "identity_id"
     t.integer  "org_id"
     t.float    "sei_hr"
     t.float    "sei_eds_hr"
@@ -74,7 +71,6 @@ ActiveRecord::Schema.define(version: 20140930115705) do
     t.text     "note"
   end
 
-  add_index "records", ["identity_id"], name: "index_records_on_identity_id"
   add_index "records", ["member_id"], name: "index_records_on_member_id"
   add_index "records", ["org_id"], name: "index_records_on_org_id"
 
