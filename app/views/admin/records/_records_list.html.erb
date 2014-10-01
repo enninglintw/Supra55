@@ -60,20 +60,20 @@
       <td> <% if record.payment_notice %>
              <i class="fa fa-check"></i>
            <% elsif record.payment_notice == false %>
-             <i class="fa fa-times"></i>
+             <i class="fa fa-remove"></i>
            <% end %> </td>
       <td> <% if record.paid %>
              <i class="fa fa-check"></i>
            <% elsif record.paid == false %>
-             <i class="fa fa-times"></i>
+             <i class="fa fa-remove"></i>
            <% end %> </td>
       <td> <%= record.sum_price_of_the_member %> </td>
-      <td> <%= link_to("Edit", 
+      <td> <%= link_to(" Edit", 
                        edit_admin_record_path(record), 
-                       :class => "fa fa-pencil-square-o")%>
-           <%= link_to("Delete", 
+                       :class => "btn btn-primary fa fa-pencil-square-o")%>
+           <%= link_to(" Delete", 
                        admin_record_path(record), 
-                       :class => "fa fa-trash-o", 
+                       :class => "btn btn-danger fa fa-trash-o", 
                        :method => :delete,
                        data: { confirm: "Are you sure?" } )%> </td> 
     </tr>

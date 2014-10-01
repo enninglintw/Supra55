@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="/"> Supra 55 </a>
+      <a class="navbar-brand fa fa-home" href="/"> Supra 55 </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -13,16 +13,16 @@
         <% if current_user.member.org_id.nil? %>
           <li> <%= "你尚不隸屬任一使用單位！" %> </li>
         <% else %>
-          <li> <%= link_to("我的使用單位及所有使用者", account_org_path(current_user.member.org_id)) %> </li>
-          <li> <%= link_to("我的使用單位及所有使用記錄", account_records_path) %> </li>
-          <li> <%= link_to("我的使用記錄", account_member_path(current_user.member)) %> </li>
+          <li> <%= link_to("我的使用單位及所有使用者", account_org_path(current_user.member.org_id), class: "fa fa-users") %> </li>
+          <li> <%= link_to("我的使用單位及所有使用記錄", account_records_path, class: "fa fa-file-text") %> </li>
+          <li> <%= link_to("我的使用記錄", account_member_path(current_user.member), class: "fa fa-file-text") %> </li>
         <% end %>
         <% if current_user.admin? %>
           <li> Admin </li>
-          <li> <%= link_to("收費標準", admin_identities_path) %> </li>
-          <li> <%= link_to("所有使用單位", admin_orgs_path) %> </li>
-          <li> <%= link_to("所有使用者", admin_members_path) %> </li>
-          <li> <%= link_to("所有使用記錄", admin_records_path) %> </li>
+          <li> <%= link_to("收費標準", admin_identities_path, class: "fa fa-usd") %> </li>
+          <li> <%= link_to("所有使用單位", admin_orgs_path, class: "fa fa-users") %> </li>
+          <li> <%= link_to("所有使用者", admin_members_path, class: "fa fa-user") %> </li>
+          <li> <%= link_to("所有使用記錄", admin_records_path, class: "fa fa-file-text") %> </li>
         </ul>
         <% end %>
       <% end %>
@@ -31,7 +31,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if !current_user %>
           <li> <%= link_to("註冊", new_user_registration_path) %> </li>
-          <li> <%= link_to("登入", new_user_session_path) %> </li>
+          <li> <%= link_to("登入", new_user_session_path, class: "fa fa-sign-in") %> </li>
         <% else %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -43,6 +43,7 @@
               </li>
               <li> <%= link_to("登出", 
                                destroy_user_session_path, 
+                               class: "fa fa-sign-out",
                                :method => :delete) %> 
               </li>
             </ul>

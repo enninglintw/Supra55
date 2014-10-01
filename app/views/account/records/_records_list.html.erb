@@ -70,12 +70,12 @@
       <td> <% if record.payment_notice %>
              <i class="fa fa-check"></i>
            <% elsif record.payment_notice == false %>
-             <i class="fa fa-times"></i>
+             <i class="fa fa-remove"></i>
            <% end %> </td>
       <td> <% if record.paid %>
              <i class="fa fa-check"></i>
            <% elsif record.paid == false %>
-             <i class="fa fa-times"></i>
+             <i class="fa fa-remove"></i>
            <% end %> </td>
       <td> <%= record.sum_price_of_the_member %> </td>
     </tr>
