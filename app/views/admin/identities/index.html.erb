@@ -26,13 +26,13 @@
       <tr>
         <td> <%= link_to(identity.id, admin_identity_path(identity)) %> </td>
         <td> <%= link_to(identity.classification, admin_identity_path(identity)) %> </td>
-        <td> <%= identity.sei_fee %> </td>
-        <td> <%= identity.sei_eds_fee %> </td>
-        <td> <%= identity.sei_ebsd_fee %> </td>
-        <td> <%= identity.sei_eds_ebsd_fee %> </td>
-        <td> <%= identity.discount_above_30k %> </td>
-        <td> <%= identity.discount_above_40k %> </td>
-        <td> <%= identity.discount_above_60k %> </td>
+        <td> <%= number_to_currency(identity.sei_fee, precision: 0) %> </td>
+        <td> <%= number_to_currency(identity.sei_eds_fee, precision: 0) %> </td>
+        <td> <%= number_to_currency(identity.sei_ebsd_fee, precision: 0) %> </td>
+        <td> <%= number_to_currency(identity.sei_eds_ebsd_fee, precision: 0) %> </td>
+        <td> <%= number_to_percentage(identity.discount_above_30k, precision: 0) %> </td>
+        <td> <%= number_to_percentage(identity.discount_above_40k, precision: 0) %> </td>
+        <td> <%= number_to_percentage(identity.discount_above_60k, precision: 0) %> </td>
         <td> <%= link_to("Edit", 
                          edit_admin_identity_path(identity), 
                          :class => "glyphicon glyphicon-edit")%>

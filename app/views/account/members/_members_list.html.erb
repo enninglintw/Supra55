@@ -20,7 +20,7 @@
       <td> <%= link_to(member.name, account_member_path(member)) %> </td>
       <td> <%= member.tel %> </td>
       <td> <% if User.find_by(name: member.name).present? %>
-             <%= "有帳號" %>
+             <i class="fa fa-check"></i>
            <% end %> </td>
       <td> <%= member.email %> </td>
       <td> <%= member.education_permitted %> </td>
