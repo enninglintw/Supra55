@@ -13,14 +13,6 @@ class Admin::RecordsController < ApplicationController
     @options = Member.all.collect do |member|
       [member.name, member.id]
     end
-
-    # @o_options = Org.all.collect do |org|
-    #   [org.name, org.id]
-    # end
-    
-    # @i_options = Identity.all.collect do |identity|
-    #   [identity.classification, identity.id]
-    # end
   end
 
   def create

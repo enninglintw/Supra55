@@ -32,13 +32,13 @@
       <td> <%= member.license_for_sei %> </td>
       <td> <%= link_to("Edit", 
                        edit_admin_member_path(member), 
-                       :class => "glyphicon glyphicon-edit")%>
+                       :class => "glyphicon glyphicon-edit") %>
 
            <%= link_to("Delete", 
                        admin_member_path(member), 
                        :class => "glyphicon glyphicon-trash", 
                        :method => :delete,
-                       data: { confirm: "Are you sure?" } )%></td> 
+                       data: { confirm: "Are you sure?" } ) %></td> 
     </tr>
     <% end %> 
   </tbody>
