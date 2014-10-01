@@ -70,10 +70,10 @@
       <td> <%= record.sum_price_of_the_member %> </td>
       <td> <%= link_to("Edit", 
                        edit_admin_record_path(record), 
-                       :class => "glyphicon glyphicon-edit")%>
+                       :class => "fa fa-pencil-square-o")%>
            <%= link_to("Delete", 
                        admin_record_path(record), 
-                       :class => "glyphicon glyphicon-trash", 
+                       :class => "fa fa-trash-o", 
                        :method => :delete,
                        data: { confirm: "Are you sure?" } )%> </td> 
     </tr>

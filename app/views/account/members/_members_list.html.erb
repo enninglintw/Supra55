@@ -28,10 +28,10 @@
       <td> <%= member.license_for_sei %> </td>
       <td> <%= link_to("Edit", 
                        edit_account_member_path(member), 
-                       :class => "glyphicon glyphicon-edit")%>
+                       :class => "fa fa-pencil-square-o")%>
            <%= link_to("從使用單位移除", 
                        remove_from_org_account_member_path(member), 
-                       :class => "glyphicon glyphicon-trash", 
+                       :class => "fa fa-trash-o", 
                        :method => :patch,
                        data: { confirm: "Are you sure?" } )%> </td> 
     </tr>

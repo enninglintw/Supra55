@@ -31,11 +31,10 @@
         <td> <%= org.note %> </td>
         <td> <%= link_to("Edit", 
                          edit_admin_org_path(org), 
-                         :class => "glyphicon glyphicon-edit")%>
-
+                         :class => "fa fa-pencil-square-o")%>
              <%= link_to("Delete", 
                          admin_org_path(org), 
-                         :class => "glyphicon glyphicon-trash", 
+                         :class => "fa fa-trash-o", 
                          :method => :delete,
                          data: { confirm: "Are you sure?" } )%></td> 
       </tr>

@@ -35,10 +35,10 @@
         <td> <%= number_to_percentage(identity.discount_above_60k, precision: 0) %> </td>
         <td> <%= link_to("Edit", 
                          edit_admin_identity_path(identity), 
-                         :class => "glyphicon glyphicon-edit")%>
+                         :class => "fa fa-pencil-square-o")%>
              <%= link_to("Delete", 
                          admin_identity_path(identity), 
-                         :class => "glyphicon glyphicon-trash", 
+                         :class => "fa fa-trash-o", 
                          :method=>:delete,
                          data: { confirm: "Are you sure?" } )%></td> 
       </tr>
