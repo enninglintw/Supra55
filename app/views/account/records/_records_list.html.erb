@@ -35,18 +35,11 @@
   </thead>
 
   <tbody>
-    <% @records.each do |record| %> 
+    <% @records.each do |record| %>
+    <!-- if record.member != current_user.member, hide sensitive infos -->
     <tr>
-      <td> <%= link_to(record.id, account_record_path(record)) %> </td>
-      <td> <%= link_to(record.member.name, account_member_path(record.member_id)) %> </td>
-
-      <!-- FIXME: 
-      sign in by 王光國 /account/records/ 裡的實驗記錄有不同單位
-      但連結只會顯示現在的使用單位
-      可能是因為account/members_controller裡的find_org
-      def find_org
-        @org = Org.find_by(id: current_user.member.org_id)
-      end -->
+      <td> <%= record.id %> </td>
+      <td> <%= record.member.name %> </td>
       <td> <% if record.org_id == current_user.member.org_id %>
              <%= link_to(record.org_name, account_org_path(record.org_id)) %>
            <% else %>

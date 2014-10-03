@@ -23,6 +23,8 @@
       <td> <%= member.tel %> </td>
       <td> <% if User.find_by(name: member.name).present? %>
              <i class="fa fa-check"></i>
+           <% else %>
+             <i class="fa fa-remove"></i>
            <% end %> </td>
       <td> <%= member.email %> </td>
       <td> <%= link_to(member.org.name, admin_org_path(member.org_id)) %> </td>

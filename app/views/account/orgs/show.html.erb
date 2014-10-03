@@ -9,10 +9,6 @@
   <p> 地址： <%= @org.address %> </p>
   <p> 電話： <%= @org.tel %> </p>
   
-  <div class="member">
-    <%= link_to("新增使用者", new_account_member_path, :class => "btn btn-primary pull-right") %>
-  </div>
-  
   <h3> 所有使用者 </h3>
   <%= render "account/members/members_list" %>
 </div>

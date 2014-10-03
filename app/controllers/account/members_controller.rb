@@ -3,24 +3,6 @@ class Account::MembersController < ApplicationController
   before_action :authenticate_user!
   before_action :find_org
 
-  def index
-    @members = @org.members
-  end
-
-  def new
-    @member = @org.members.new
-  end
-
-  def create
-    @member = @org.members.new(member_params)
-
-    if @member.save
-      redirect_to account_members_path, :notice => '新增使用者成功！'
-    else
-      render :new
-    end
-  end
-
   def show
     @member = @org.members.find(params[:id])
     @records = @member.records
@@ -39,16 +21,7 @@ class Account::MembersController < ApplicationController
       render :edit  
     end
   end
-
-  def remove_from_org
-    @member = @org.members.find(params[:id])
-
-    # FIXME: set undefined org_id as sth else
-    @member.org_id = 13
-    @member.save
-    redirect_to account_members_path, :alert => '使用者已移除！'
-  end
-
+  
 
   private
 

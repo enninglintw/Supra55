@@ -9,31 +9,29 @@
       <th>申請教學資格</th>
       <th>SEI教學完成</th>
       <th>SEI執照</th>
-      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @members.each do |member| %>
+    <!-- if member != current_user.member, hide sensitive infos -->
     <tr>
-      <td> <%= link_to(member.id, account_member_path(member)) %> </td>
-      <td> <%= link_to(member.name, account_member_path(member)) %> </td>
+      <td> <%= member.id %> </td>
+      <td> <% if member == current_user.member %>
+             <%= link_to(member.name, account_member_path(member)) %>
+           <% else %>
+             <%= member.name %>
+           <% end %> </td>
       <td> <%= member.tel %> </td>
       <td> <% if User.find_by(name: member.name).present? %>
              <i class="fa fa-check"></i>
+           <% else %>
+             <i class="fa fa-remove"></i>
            <% end %> </td>
       <td> <%= member.email %> </td>
       <td> <%= member.education_permitted %> </td>
       <td> <%= member.educated_for_sei %> </td>
       <td> <%= member.license_for_sei %> </td>
-      <td> <%= link_to(" Edit", 
-                       edit_account_member_path(member), 
-                       :class => "btn btn-primary fa fa-pencil-square-o")%>
-           <%= link_to(" 從使用單位移除", 
-                       remove_from_org_account_member_path(member), 
-                       :class => "btn btn-danger fa fa-trash-o",  
-                       :method => :patch,
-                       data: { confirm: "Are you sure?" } )%> </td> 
     </tr>
     <% end %> 
   </tbody>

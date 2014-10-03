@@ -5,8 +5,8 @@
   <h1> 使用者 </h1>
   <h2> <%= @member.name %> </h2>
   <p> 電話： <%= @member.tel %> </p>
-  <p> 隸屬單位： <%= @member.org.name %> </p>
-  <p> 收費標準： <%= @member.org.identity.classification %> </p>
+  <p> 隸屬單位： <%= link_to(@member.org.name, account_org_path(@member.org_id)) %> </p>
+  <p> 收費標準： <%= link_to(@member.org.identity.classification, account_identity_path(@member.org.identity_id)) %> </p>
   <p> 申請教學資格： <%= @member.education_permitted %> </p>
   <p> SEI教學完成： <%= @member.educated_for_sei %> </p>
   <p> SEI執照： <%= @member.license_for_sei %> </p>
