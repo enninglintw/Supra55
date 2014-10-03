@@ -3,9 +3,11 @@
   姓名： <%= f.text_field :name %> <br />
   電話： <%= f.text_field :tel %> <br />
   email： <%= f.text_field :email %> <br />
-  <%= f.check_box :education_permitted %> 申請教學資格 <br />
-  <%= f.check_box :educated_for_sei %> SEI教學完成 <br />
-  <%= f.check_box :license_for_sei %> SEI執照 <br />
+
+  <!-- FIXME: try change f.select into f.radio -->
+  SEI：<%= f.select :sei, @license_status %> <br />
+  EDS：<%= f.select :eds, @license_status %> <br />
+  EBSD：<%= f.select :ebsd, @license_status %> <br />
 
   <div class="form-actions">
     <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%> 

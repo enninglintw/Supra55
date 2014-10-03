@@ -4,7 +4,7 @@ class Admin::RecordsController < ApplicationController
   before_action :admin_required
 
   def index
-    @records = Record.all.order("start_at")
+    @records = Record.all.order(start_at: :asc)
   end
 
   def new

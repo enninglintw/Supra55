@@ -4,7 +4,7 @@ class Admin::MembersController < ApplicationController
   before_action :admin_required
 
   def index
-    @members = Member.all
+    @members = Member.all.order(org_id: :desc)
   end
 
   def new
@@ -12,12 +12,19 @@ class Admin::MembersController < ApplicationController
     @options = Org.all.collect do |org|
       [org.name, org.id]
     end
+    @license_status = ['不具學習資格', '未學習操作', '已學習操作', '已考照', '？']
   end
 
   def create
     @member = Member.new(member_params)
     
     if @member.save
+      if @member.org.identity_id != 1
+        @member.sei = '不具學習資格'
+        @member.eds = '不具學習資格'
+        @member.ebsd = '不具學習資格'
+        @member.save
+      end
       redirect_to admin_members_path, :notice => '新增使用者成功！'
     else
       render :new
@@ -34,6 +41,13 @@ class Admin::MembersController < ApplicationController
     @options = Org.all.collect do |org|
       [org.name, org.id]
     end
+
+    if @member.org.identity_id != 1
+      @license_status = ['不具學習資格']
+    else
+      @license_status = ['不具學習資格', '未學習操作', '已學習操作', '已考照', '？']
+    end
+
   end
 
   def update
@@ -60,9 +74,9 @@ class Admin::MembersController < ApplicationController
     params.require(:member).permit(:name,
                                    :tel,
                                    :email,
-                                   :education_permitted,
-                                   :educated_for_sei,
-                                   :license_for_sei,
-                                   :org_id)
+                                   :org_id,
+                                   :sei,
+                                   :eds,
+                                   :ebsd)
   end
 end

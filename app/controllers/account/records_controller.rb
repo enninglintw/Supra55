@@ -4,7 +4,7 @@ class Account::RecordsController < ApplicationController
   before_action :find_org
 
   def index
-    @records = @org.records.order("start_at")
+    @records = @org.records.order(start_at: :asc)
   end
 
 

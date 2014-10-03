@@ -8,9 +8,9 @@
       <th>email</th>
       <th>隸屬單位</th>
       <th>收費標準</th>
-      <th>申請教學資格</th>
-      <th>SEI教學完成</th>
-      <th>SEI執照</th>
+      <th>SEI</th>
+      <th>EDS</th>
+      <th>EBSD</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -29,9 +29,9 @@
       <td> <%= member.email %> </td>
       <td> <%= link_to(member.org.name, admin_org_path(member.org_id)) %> </td>
       <td> <%= link_to(member.org.identity.classification, admin_identity_path(member.org.identity_id)) %> </td>
-      <td> <%= member.education_permitted %> </td>
-      <td> <%= member.educated_for_sei %> </td>
-      <td> <%= member.license_for_sei %> </td>
+      <td> <%= member.sei %> </td>
+      <td> <%= member.eds %> </td>
+      <td> <%= member.ebsd %> </td>
       <td> <%= link_to(" Edit", 
                        edit_admin_member_path(member), 
                        :class => "btn btn-primary fa fa-pencil-square-o")%>

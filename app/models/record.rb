@@ -63,12 +63,12 @@ class Record < ActiveRecord::Base
     self.original_price * self.discount / 100
   end
 
-  def sum_price_of_the_member
-    "累計金額"
-  end
-
   # FIXME: 算年度總價
   # def self.sum_price_of_the_member
   #   records.inject(0) {|sum, record| sum + record.sum_price }
   # end
+  def sum_price_of_the_member
+    "使用者累計金額"
+  end
+
 end

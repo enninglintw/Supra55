@@ -6,9 +6,10 @@
       <th>電話</th>
       <th>帳號</th>
       <th>email</th>
-      <th>申請教學資格</th>
-      <th>SEI教學完成</th>
-      <th>SEI執照</th>
+      <th>SEI</th>
+      <th>EDS</th>
+      <th>EBSD</th>
+
     </tr>
   </thead>
 
@@ -29,9 +30,9 @@
              <i class="fa fa-remove"></i>
            <% end %> </td>
       <td> <%= member.email %> </td>
-      <td> <%= member.education_permitted %> </td>
-      <td> <%= member.educated_for_sei %> </td>
-      <td> <%= member.license_for_sei %> </td>
+      <td> <%= member.sei %> </td>
+      <td> <%= member.eds %> </td>
+      <td> <%= member.ebsd %> </td>
     </tr>
     <% end %> 
   </tbody>

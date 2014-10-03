@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141001084901) do
+ActiveRecord::Schema.define(version: 20141003150810) do
 
   create_table "identities", force: true do |t|
     t.string   "classification"
@@ -30,13 +30,13 @@ ActiveRecord::Schema.define(version: 20141001084901) do
     t.string   "name"
     t.integer  "org_id"
     t.string   "tel"
-    t.boolean  "education_permitted"
-    t.boolean  "educated_for_sei"
-    t.boolean  "license_for_sei"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "email"
+    t.string   "sei"
+    t.string   "eds"
+    t.string   "ebsd"
   end
 
   add_index "members", ["org_id"], name: "index_members_on_org_id"
