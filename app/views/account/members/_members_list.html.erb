@@ -14,13 +14,13 @@
 
   <tbody>
     <% @members.each do |member| %>
-    <!-- if member != current_user.member, hide sensitive infos -->
+    <!-- FIXME: if member != current_user.member, hide ALL sensitive infos -->
     <tr>
       <td> <%= member.id %> </td>
       <td> <% if member == current_user.member %>
              <%= link_to(member.name, account_member_path(member)) %>
            <% else %>
-             <%= member.name %>
+             <%= hide_member_name_from_members(member) %>
            <% end %> </td>
       <td> <%= member.tel %> </td>
       <td> <% if User.find_by(name: member.name).present? %>

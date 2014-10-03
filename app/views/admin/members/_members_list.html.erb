@@ -19,7 +19,7 @@
     <% @members.each do |member| %> 
     <tr>
       <td> <%= link_to(member.id, admin_member_path(member)) %> </td>
-      <td> <%= link_to(hide_member_name(member), admin_member_path(member)) %> </td>
+      <td> <%= link_to(member.name, admin_member_path(member)) %> </td>
       <td> <%= member.tel %> </td>
       <td> <% if User.find_by(name: member.name).present? %>
              <i class="fa fa-check"></i>

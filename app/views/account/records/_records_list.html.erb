@@ -36,16 +36,27 @@
 
   <tbody>
     <% @records.each do |record| %>
-    <!-- if record.member != current_user.member, hide sensitive infos -->
+    <!-- FIXME: if record.member != current_user.member, hide ALL sensitive infos -->
     <tr>
       <td> <%= record.id %> </td>
-      <td> <%= record.member.name %> </td>
+      <td> <% if record.member == current_user.member %>
+             <%= link_to(record.member.name, account_member_path(record.member)) %>
+           <% else %>
+             <%= hide_member_name_from_records(record) %>
+           <% end %> </td>
+
+
+
       <td> <% if record.org_id == current_user.member.org_id %>
              <%= link_to(record.org_name, account_org_path(record.org_id)) %>
            <% else %>
              <%= record.org_name %>
            <% end %> </td>
-      <td> <%= link_to(record.identity_classificaion, account_identity_path(record.org.identity_id)) %> </td>
+      <td> <% if record.org.identity_id == current_user.member.org.identity_id %>
+             <%= link_to(record.identity_classificaion, account_identity_path(record.org.identity_id)) %>
+           <% else %>
+             <%= record.identity_classificaion %>
+           <% end %> </td>
       <td> <%= record.start_at.to_s(:db) %> </td>
       <td> <%= record.end_at.to_s(:db) %> </td>
       <td> <%= number_to_human(record.sum_hr, units: {unit: "hrs"}) %> </td>
