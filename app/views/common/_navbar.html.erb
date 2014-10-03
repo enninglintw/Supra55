@@ -1,5 +1,6 @@
 <nav class="navbar navbar-default" role="navigation" style="margin-top: 20px">
   <div class="container-fluid">
+
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <a class="navbar-brand fa fa-home" href="/"> Supra 55 </a>
@@ -13,7 +14,7 @@
         <% if current_user.member.org_id.nil? %>
           <li> <%= "你尚不隸屬任一使用單位！" %> </li>
         <% else %>
-          <li> <%= link_to("我的收費標準", 
+          <li> <%= link_to("收費標準", 
                            account_identity_path(current_user.member.org.identity_id), 
                            class: "fa fa-usd") %> </li>
           <li> <%= link_to("我的使用單位", 
@@ -44,6 +45,7 @@
         <% end %>
       <% end %>
     </div>
+
     <div>
       <ul class="nav navbar-nav navbar-right">
         <% if !current_user %>
@@ -68,5 +70,6 @@
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
+
   </div><!-- /.container-fluid -->
 </nav>
