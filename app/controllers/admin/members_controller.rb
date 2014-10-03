@@ -40,8 +40,6 @@ class Admin::MembersController < ApplicationController
     @member = Member.find(params[:id])
 
     if @member.update(member_params)
-      # @member.identity_id = @member.org.identity_id
-      # @member.save
       redirect_to admin_members_path, :notice => '編輯使用者成功！'
     else
       render :edit
