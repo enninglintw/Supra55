@@ -45,7 +45,6 @@ class Account::MembersController < ApplicationController
 
     # FIXME: set undefined org_id as sth else
     @member.org_id = 13
-    @member.identity_id = @member.org.identity_id
     @member.save
     redirect_to account_members_path, :alert => '使用者已移除！'
   end
