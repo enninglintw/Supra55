@@ -15,9 +15,9 @@
         <th> SEI + EDS 費用 </th>
         <th> SEI + EBSD 費用 </th>
         <th> SEI + EDS + EBSD 費用 </th>
-        <th> 年使用費滿3萬折扣 </th>
-        <th> 年使用費滿4萬折扣 </th>
-        <th> 年使用費滿6萬折扣 </th>
+        <th> 年使用費滿3萬後 <br /> 後續使用費折扣 </th>
+        <th> 年使用費滿4萬後 <br /> 後續使用費折扣 </th>
+        <th> 年使用費滿6萬後 <br /> 後續使用費折扣 </th>
       </tr>
     </thead>
 
@@ -26,10 +26,11 @@
       <tr>
         <td> <%= link_to(identity.id, admin_identity_path(identity)) %> </td>
         <td> <%= link_to(identity.classification, admin_identity_path(identity)) %> </td>
-        <td> <%= number_to_currency(identity.sei_fee, precision: 0) %> </td>
-        <td> <%= number_to_currency(identity.sei_eds_fee, precision: 0) %> </td>
-        <td> <%= number_to_currency(identity.sei_ebsd_fee, precision: 0) %> </td>
-        <td> <%= number_to_currency(identity.sei_eds_ebsd_fee, precision: 0) %> </td>
+
+        <td> <%= number_to_currency(number_to_human(identity.sei_fee, units: {unit: "元/hr"}), precision: 0) %> </td>
+        <td> <%= number_to_currency(number_to_human(identity.sei_eds_fee, units: {unit: "元/hr"}), precision: 0) %> </td>
+        <td> <%= number_to_currency(number_to_human(identity.sei_ebsd_fee, units: {unit: "元/hr"}), precision: 0) %> </td>
+        <td> <%= number_to_currency(number_to_human(identity.sei_eds_ebsd_fee, units: {unit: "元/hr"}), precision: 0) %> </td>
         <td> <%= number_to_percentage(identity.discount_above_30k, precision: 0) %> </td>
         <td> <%= number_to_percentage(identity.discount_above_40k, precision: 0) %> </td>
         <td> <%= number_to_percentage(identity.discount_above_60k, precision: 0) %> </td>

@@ -2,11 +2,13 @@
   <h1> 收費標準 </h1>
   <p> 儀器使用時間未滿一小時者，以一小時計費。 </p>
   <h2> <%= @identity.classification %> </h2>
-  <p> SEI 費用：               <%= @identity.sei_fee %> </p>
-  <p> SEI + EDS 費用：         <%= @identity.sei_eds_fee %> </p>
-  <p> SEI + EBSD 費用：        <%= @identity.sei_ebsd_fee %> </p>
-  <p> SEI + EDS + EBSD 費用：  <%= @identity.sei_eds_ebsd_fee %> </p>
-  <p> 年使用費滿3萬折扣：        <%= @identity.discount_above_30k %> </p>
-  <p> 年使用費滿4萬折扣：        <%= @identity.discount_above_40k %> </p>
-  <p> 年使用費滿6萬折扣：        <%= @identity.discount_above_60k %> </p>
+
+  <!-- FIXME: admin/identities#show & account/identities#show use the same template, use helper to refactor -->
+  <p> SEI 費用：               <%= number_to_currency(number_to_human(@identity.sei_fee, units: {unit: "元/hr"}), precision: 0) %> </p>
+  <p> SEI + EDS 費用：         <%= number_to_currency(number_to_human(@identity.sei_eds_fee, units: {unit: "元/hr"}), precision: 0) %> </p>
+  <p> SEI + EBSD 費用：        <%= number_to_currency(number_to_human(@identity.sei_ebsd_fee, units: {unit: "元/hr"}), precision: 0) %> </p>
+  <p> SEI + EDS + EBSD 費用：  <%= number_to_currency(number_to_human(@identity.sei_eds_ebsd_fee, units: {unit: "元/hr"}), precision: 0) %> </p>
+  <p> 年使用費滿3萬折扣：        <%= number_to_percentage(@identity.discount_above_30k, precision: 0) %> </p>
+  <p> 年使用費滿4萬折扣：        <%= number_to_percentage(@identity.discount_above_40k, precision: 0) %> </p>
+  <p> 年使用費滿6萬折扣：        <%= number_to_percentage(@identity.discount_above_60k, precision: 0) %> </p>
 </div>

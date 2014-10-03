@@ -5,6 +5,8 @@ class Admin::RecordsController < ApplicationController
 
   def index
     @records = Record.all.order(start_at: :asc)
+    # FIXME: DRY
+    # @items = ["sei", "sei_eds", "sei_ebsd", "sei_eds_ebsd"]
   end
 
   def new

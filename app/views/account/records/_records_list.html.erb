@@ -4,8 +4,7 @@
       <th> # </th>
       <th colspan="3"> 使用者資料 </th>
       <th colspan="3"> 時間 </th>
-      <th colspan="4"> 使用時數 </th>
-      <th colspan="7"> 使用費 </th>
+      <th colspan="4"> 使用費 </th>
       <th colspan="3"> 其他 </th>
       <th colspan="2"> </th>
     </tr>
@@ -17,14 +16,7 @@
       <th> 開始時間 </th>
       <th> 結束時間 </th>
       <th> 總時數 </th>
-      <th> SEI </th>
-      <th> SEI + EDS </th>
-      <th> SEI + EBSD </th>
-      <th> SEI + EDS + EBSD </th>
-      <th> SEI </th>
-      <th> SEI + EDS </th>
-      <th> SEI + EBSD </th>
-      <th> SEI + EDS + EBSD </th>
+      <th width="300"> 明細 </th>
       <th> 原價 </th>
       <th> 折扣 </th>
       <th> 總價 </th>
@@ -39,19 +31,19 @@
     <!-- FIXME: if record.member != current_user.member, hide ALL sensitive infos -->
     <tr>
       <td> <%= record.id %> </td>
+
       <td> <% if record.member == current_user.member %>
              <%= link_to(record.member.name, account_member_path(record.member)) %>
            <% else %>
              <%= hide_member_name_from_records(record) %>
            <% end %> </td>
 
-
-
       <td> <% if record.org_id == current_user.member.org_id %>
              <%= link_to(record.org_name, account_org_path(record.org_id)) %>
            <% else %>
              <%= record.org_name %>
            <% end %> </td>
+
       <td> <% if record.org.identity_id == current_user.member.org.identity_id %>
              <%= link_to(record.identity_classificaion, account_identity_path(record.org.identity_id)) %>
            <% else %>
@@ -59,28 +51,31 @@
            <% end %> </td>
       <td> <%= record.start_at.to_s(:db) %> </td>
       <td> <%= record.end_at.to_s(:db) %> </td>
+      <!-- FIXME: use l18n to set one: "hr" other: "hrs" -->
       <td> <%= number_to_human(record.sum_hr, units: {unit: "hrs"}) %> </td>
-      <td> <%= number_to_human(record.sei_hr, units: {unit: "hrs"}) %> </td>
-      <td> <%= number_to_human(record.sei_eds_hr, units: {unit: "hrs"}) %> </td>
-      <td> <%= number_to_human(record.sei_ebsd_hr, units: {unit: "hrs"}) %> </td>
-      <td> <%= number_to_human(record.sei_eds_ebsd_hr, units: {unit: "hrs"}) %> </td>
-      <td> <%= number_to_currency(record.sei_price, precision: 0) %> </td>
-      <td> <%= number_to_currency(record.sei_eds_price, precision: 0) %> </td>
-      <td> <%= number_to_currency(record.sei_ebsd_price, precision: 0) %> </td>
-      <td> <%= number_to_currency(record.sei_eds_ebsd_price, precision: 0) %> </td>
+
+      <!-- FIXME: solve the <br /> problem -->
+      <td> <%= sei_price_detail(record) %> <br />
+           <%= sei_eds_price_detail(record) %> <br />
+           <%= sei_ebsd_price_detail(record) %> <br />
+           <%= sei_eds_ebsd_price_detail(record) %> </td>
+
       <td> <%= number_to_currency(record.original_price, precision: 0) %> </td>
       <td> <%= number_to_percentage(record.discount, precision: 0) %> </td>
       <td> <%= number_to_currency(record.sum_price, precision: 0) %> </td>
+
       <td> <% if record.payment_notice %>
              <i class="fa fa-check"></i>
            <% elsif record.payment_notice == false %>
              <i class="fa fa-remove"></i>
            <% end %> </td>
+
       <td> <% if record.paid %>
              <i class="fa fa-check"></i>
            <% elsif record.paid == false %>
              <i class="fa fa-remove"></i>
            <% end %> </td>
+
       <td> <%= record.sum_price_of_the_member %> </td>
     </tr>
     <% end %> 
