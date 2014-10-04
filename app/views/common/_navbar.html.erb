@@ -8,39 +8,42 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-left">
-      <% if current_user %>
-        <ul class="nav navbar-nav">
-          <li> Account </li>
-        <% if current_user.member.org_id.nil? %>
-          <li> <%= "你尚不隸屬任一使用單位！" %> </li>
-        <% else %>
-          <li> <%= link_to("我的使用單位", 
-                           account_org_path(current_user.member.org_id), 
-                           class: "fa fa-users") %> </li>
-          <li> <%= link_to("我的使用者", 
-                           account_member_path(current_user.member), 
-                           class: "fa fa-user") %> </li>
-          <li> <%= link_to("我的使用單位及使用記錄", 
-                           account_records_path, 
-                           class: "fa fa-file-text") %> </li>
-        <% end %>
-        <% if current_user.admin? %>
-          <li> Admin </li>
-          <li> <%= link_to("收費標準", 
-                           admin_identities_path, 
-                           class: "fa fa-usd") %> </li>
-          <li> <%= link_to("所有使用單位", 
-                           admin_orgs_path, 
-                           class: "fa fa-users") %> </li>
-          <li> <%= link_to("所有使用者", 
-                           admin_members_path, 
-                           class: "fa fa-user") %> </li>
-          <li> <%= link_to("所有使用記錄", 
-                           admin_records_path, 
-                           class: "fa fa-file-text") %> </li>
-        </ul>
-        <% end %>
+      <ul class="nav navbar-nav">
+        <li> <%= link_to("預約表", 
+                         reservations_path, 
+                         class: "fa fa-pencil-square-o") %> </li>
+    <% if current_user %>
+        <li> Account </li>
+      <% if current_user.member.org_id.nil? %>
+        <li> <%= "你尚不隸屬任一使用單位！" %> </li>
+      <% else %>
+        <li> <%= link_to("我的使用單位", 
+                         account_org_path(current_user.member.org_id), 
+                         class: "fa fa-users") %> </li>
+        <li> <%= link_to("我的使用者", 
+                         account_member_path(current_user.member), 
+                         class: "fa fa-user") %> </li>
+        <li> <%= link_to("我的使用單位及使用記錄", 
+                         account_records_path, 
+                         class: "fa fa-file-text") %> </li>
       <% end %>
+      <% if current_user.admin? %>
+        <li> Admin </li>
+        <li> <%= link_to("收費標準", 
+                         admin_identities_path, 
+                         class: "fa fa-usd") %> </li>
+        <li> <%= link_to("所有使用單位", 
+                         admin_orgs_path, 
+                         class: "fa fa-users") %> </li>
+        <li> <%= link_to("所有使用者", 
+                         admin_members_path, 
+                         class: "fa fa-user") %> </li>
+        <li> <%= link_to("所有使用記錄", 
+                         admin_records_path, 
+                         class: "fa fa-file-text") %> </li>
+      </ul>
+      <% end %>
+    <% end %>
     </div>
 
     <div>
