@@ -15,6 +15,10 @@
         <th> 開始時間 </th>
         <th> 結束時間 </th>
         <th> 時數 </th>
+        <th> SEI </th>
+        <th> BEI </th>
+        <th> EDS </th>
+        <th> EBSD </th>
         <th> 時段屬性 </th>
       <% if current_user.nil? %>
       <% else %>
@@ -36,6 +40,18 @@
         <td> <%= reservation.start_at %> </td>
         <td> <%= reservation.end_at %> </td>
         <td> <%= reservation.sum_hr %> </td>
+        <td> <% if reservation.sei? %>
+               <i class="fa fa-check"></i>
+             <% end %> </td>
+        <td> <% if reservation.bei? %>
+               <i class="fa fa-check"></i>
+             <% end %> </td>
+        <td> <% if reservation.eds? %>
+               <i class="fa fa-check"></i>
+             <% end %> </td>
+        <td> <% if reservation.ebsd? %>
+               <i class="fa fa-check"></i>
+             <% end %> </td>
         <td> <%= reservation.section_type %> </td>
       <% if current_user.nil? %>
       <% elsif current_user.admin? || (current_user.member.id == reservation.member_id) %>

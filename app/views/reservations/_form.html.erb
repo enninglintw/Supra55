@@ -11,6 +11,12 @@
   結束時間：<%= f.datetime_select :end_at, 
                                  :ampm => false, 
                                  :minute_step => 10 %> <br />
+  <!-- FIXME: refine layout -->
+  使用項目： <br />
+  <%= f.check_box :sei %> SEI: 二次電子成像 <br />
+  <%= f.check_box :bei %> BEI: 背向散射電子成像 <br />
+  <%= f.check_box :eds %> EDS: 元素分析 <br />
+  <%= f.check_box :ebsd %> EBSD: 晶體结構分析 <br />
 
   <div class="form-actions">
     <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%>
