@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141003150810) do
+ActiveRecord::Schema.define(version: 20141004130215) do
 
   create_table "identities", force: true do |t|
     t.string   "classification"
@@ -73,6 +73,17 @@ ActiveRecord::Schema.define(version: 20141003150810) do
 
   add_index "records", ["member_id"], name: "index_records_on_member_id"
   add_index "records", ["org_id"], name: "index_records_on_org_id"
+
+  create_table "reservations", force: true do |t|
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.string   "section_type"
+    t.integer  "member_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reservations", ["member_id"], name: "index_reservations_on_member_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
