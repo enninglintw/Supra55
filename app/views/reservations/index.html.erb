@@ -1,10 +1,13 @@
-<div class="col-md-12">
+<div class="col-md-8 col-md-offset-2">
 
   <h1> 預約表 </h1>
 
-  <%= link_to("新增預約", new_reservation_path, :class => "btn btn-primary pull-right") %>
+  <% if current_user.nil? %>
+  <% else %>
+    <%= link_to("新增預約", new_reservation_path, :class => "btn btn-primary pull-right") %>
+  <% end %>
 
-  <table class="table table-hover">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th> id </th>
@@ -12,8 +15,9 @@
         <th> 開始時間 </th>
         <th> 結束時間 </th>
         <th> 時段屬性 </th>
-      <% if current_user.admin? %>
-        <th colspan="2"> </th>         
+      <% if current_user.nil? %>
+      <% else %>
+        <th colspan="2"> </th>
       <% end %>
         
       </tr>
@@ -23,15 +27,17 @@
       <% @reservations.each do |reservation| %> 
       <tr>
         <td> <%= reservation.id %> </td>
-        <td> <% if current_user.admin? %>
-               <%= link_to(reservation.member.name, admin_member_path(member)) %>
+        <td> <% if current_user.nil? %>
+             <% elsif current_user.admin? %>
+               <%= link_to(reservation.member.name, admin_member_path(reservation.member)) %>
              <% else %>
                <%= reservation.member.name %>
              <% end %> </td>
         <td> <%= reservation.start_at %> </td>
         <td> <%= reservation.end_at %> </td>
         <td> <%= reservation.section_type %> </td>
-      <% if current_user.admin? %>
+      <% if current_user.nil? %>
+      <% elsif current_user.admin? || (current_user.member.id == reservation.member_id) %>
         <td> <%= link_to(" Edit", 
                          edit_reservation_path(reservation), 
                          :class => "btn btn-primary fa fa-pencil-square-o")%>
@@ -39,7 +45,10 @@
                          reservation_path(reservation), 
                          :class => "btn btn-danger fa fa-trash-o", 
                          :method => :delete,
-                         data: { confirm: "Are you sure?" } ) %></td>
+                         data: { confirm: "Are you sure?" } ) %> </td>
+      <% else %>
+        <td> <%= "" %>
+             <%= "" %> </td>
       <% end %>
       </tr>
       <% end %> 

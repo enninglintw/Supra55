@@ -1,0 +1,13 @@
+<%= form_for @reservation do |f| %>
+  使用者：<%= current_user.member.name %> <br />
+  開始時間：<%= f.datetime_select :start_at, 
+                                 :ampm => false, 
+                                 :minute_step => 10 %> <br />
+  結束時間：<%= f.datetime_select :end_at, 
+                                 :ampm => false, 
+                                 :minute_step => 10 %> <br />
+
+  <div class="form-actions">
+    <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%>
+  </div>
+<% end %> 
