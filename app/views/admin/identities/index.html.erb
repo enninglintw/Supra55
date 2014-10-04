@@ -1,49 +1,52 @@
-<div class="col-md-12"> 
-  <h1>收費標準</h1>
-  <p> 儀器使用時間未滿一小時者，以一小時計費。 </p>
+<div class="col-md-12">
 
-  <div class="identity">
-    <%= link_to("新增收費標準", new_admin_identity_path, :class => "btn btn-primary pull-right") %>
+  <div> 
+    <h1> 收費標準 </h1>
+    <p> 儀器使用時間未滿一小時者，以一小時計費。 </p>
   </div>
 
-  <table class="table table-hover">
-    <thead> 
-      <tr>
-        <th> # </th>
-        <th> 收費標準 </th>
-        <th> SEI 費用 </th>
-        <th> SEI + EDS 費用 </th>
-        <th> SEI + EBSD 費用 </th>
-        <th> SEI + EDS + EBSD 費用 </th>
-        <th> 年使用費滿3萬後 <br /> 後續使用費折扣 </th>
-        <th> 年使用費滿4萬後 <br /> 後續使用費折扣 </th>
-        <th> 年使用費滿6萬後 <br /> 後續使用費折扣 </th>
-      </tr>
-    </thead>
+  <div>
+    <%= link_to("新增收費標準", new_admin_identity_path, :class => "btn btn-primary pull-right") %>
 
-    <tbody>
-      <% @identities.each do |identity| %> 
-      <tr>
-        <td> <%= link_to(identity.id, admin_identity_path(identity)) %> </td>
-        <td> <%= link_to(identity.classification, admin_identity_path(identity)) %> </td>
+    <table class="table table-hover">
+      <thead> 
+        <tr>
+          <th> # </th>
+          <th> 收費標準 </th>
+          <th> SEI 費用 </th>
+          <th> SEI + EDS 費用 </th>
+          <th> SEI + EBSD 費用 </th>
+          <th> SEI + EDS + EBSD 費用 </th>
+          <th> 年使用費滿3萬後 <br /> 後續使用費折扣 </th>
+          <th> 年使用費滿4萬後 <br /> 後續使用費折扣 </th>
+          <th> 年使用費滿6萬後 <br /> 後續使用費折扣 </th>
+        </tr>
+      </thead>
 
-        <td> <%= number_to_currency(number_to_human(identity.sei_fee, units: {unit: "元/hr"}), precision: 0) %> </td>
-        <td> <%= number_to_currency(number_to_human(identity.sei_eds_fee, units: {unit: "元/hr"}), precision: 0) %> </td>
-        <td> <%= number_to_currency(number_to_human(identity.sei_ebsd_fee, units: {unit: "元/hr"}), precision: 0) %> </td>
-        <td> <%= number_to_currency(number_to_human(identity.sei_eds_ebsd_fee, units: {unit: "元/hr"}), precision: 0) %> </td>
-        <td> <%= number_to_percentage(identity.discount_above_30k, precision: 0) %> </td>
-        <td> <%= number_to_percentage(identity.discount_above_40k, precision: 0) %> </td>
-        <td> <%= number_to_percentage(identity.discount_above_60k, precision: 0) %> </td>
-        <td> <%= link_to(" Edit", 
-                         edit_admin_identity_path(identity), 
-                         :class => "btn btn-primary fa fa-pencil-square-o")%>
-             <%= link_to(" Delete", 
-                         admin_identity_path(identity), 
-                         :class => "btn btn-danger fa fa-trash-o", 
-                         :method=>:delete,
-                         data: { confirm: "Are you sure?" } )%></td> 
-      </tr>
-      <% end %> 
-    </tbody>
-  </table>
+      <tbody>
+        <% @identities.each do |identity| %> 
+        <tr>
+          <td> <%= identity.id %> </td>
+          <td> <%= link_to(identity.classification, admin_identity_path(identity)) %> </td>
+
+          <td> <%= number_to_currency(number_to_human(identity.sei_fee, units: {unit: "元/hr"}), precision: 0) %> </td>
+          <td> <%= number_to_currency(number_to_human(identity.sei_eds_fee, units: {unit: "元/hr"}), precision: 0) %> </td>
+          <td> <%= number_to_currency(number_to_human(identity.sei_ebsd_fee, units: {unit: "元/hr"}), precision: 0) %> </td>
+          <td> <%= number_to_currency(number_to_human(identity.sei_eds_ebsd_fee, units: {unit: "元/hr"}), precision: 0) %> </td>
+          <td> <%= number_to_percentage(identity.discount_above_30k, precision: 0) %> </td>
+          <td> <%= number_to_percentage(identity.discount_above_40k, precision: 0) %> </td>
+          <td> <%= number_to_percentage(identity.discount_above_60k, precision: 0) %> </td>
+          <td> <%= link_to(" Edit", 
+                           edit_admin_identity_path(identity), 
+                           :class => "btn btn-primary fa fa-pencil-square-o")%>
+               <%= link_to(" Delete", 
+                           admin_identity_path(identity), 
+                           :class => "btn btn-danger fa fa-trash-o", 
+                           :method=>:delete,
+                           data: { confirm: "Are you sure?" } )%></td> 
+        </tr>
+        <% end %> 
+      </tbody>
+    </table>
+  </div>
 </div>

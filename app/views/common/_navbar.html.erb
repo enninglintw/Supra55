@@ -14,9 +14,6 @@
         <% if current_user.member.org_id.nil? %>
           <li> <%= "你尚不隸屬任一使用單位！" %> </li>
         <% else %>
-          <li> <%= link_to("收費標準", 
-                           account_identity_path(current_user.member.org.identity_id), 
-                           class: "fa fa-usd") %> </li>
           <li> <%= link_to("我的使用單位", 
                            account_org_path(current_user.member.org_id), 
                            class: "fa fa-users") %> </li>

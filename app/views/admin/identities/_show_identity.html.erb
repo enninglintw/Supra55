@@ -1,0 +1,35 @@
+<h1> <%= @identity.classification %> </h1>
+<p> 儀器使用時間未滿一小時者，以一小時計費。 </p>
+
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <th> SEI 費用 </th>
+      <td> <%= number_to_currency(number_to_human(@identity.sei_fee, units: {unit: "元/hr"}), precision: 0) %> </td>
+    </tr>
+    <tr>
+      <th> SEI + EDS 費用 </th>
+      <td> <%= number_to_currency(number_to_human(@identity.sei_eds_fee, units: {unit: "元/hr"}), precision: 0) %> </td>
+    </tr>
+    <tr>
+      <th> SEI + EBSD 費用 </th>
+      <td> <%= number_to_currency(number_to_human(@identity.sei_ebsd_fee, units: {unit: "元/hr"}), precision: 0) %> </td>
+    </tr>
+    <tr>
+      <th> SEI + EDS + EBSD 費用 </th>
+      <td> <%= number_to_currency(number_to_human(@identity.sei_eds_ebsd_fee, units: {unit: "元/hr"}), precision: 0) %> </td>
+    </tr>
+    <tr>
+      <th> 年使用費滿3萬後 <br /> 後續使用費折扣 </th>
+      <td> <%= number_to_percentage(@identity.discount_above_30k, precision: 0) %> </td>
+    </tr>
+    <tr>
+      <th> 年使用費滿4萬後 <br /> 後續使用費折扣 </th>
+      <td> <%= number_to_percentage(@identity.discount_above_40k, precision: 0) %> </td>
+    </tr>
+    <tr>
+      <th> 年使用費滿6萬後 <br /> 後續使用費折扣 </th>
+      <td> <%= number_to_percentage(@identity.discount_above_60k, precision: 0) %> </td>
+    </tr>
+  </tbody>
+</table>

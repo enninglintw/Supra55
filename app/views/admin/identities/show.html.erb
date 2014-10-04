@@ -1,55 +1,46 @@
-<div class="col-md-12">
-  <div class="identity">
-    <%= link_to("編輯收費標準", edit_admin_identity_path(@identity), :class => "btn btn-primary pull-right")%> 
+<div class="row">
+  <div class="col-md-4">
+    <%= link_to("編輯收費標準", edit_admin_identity_path(@identity), :class => "btn btn-primary pull-right")%>
+    <%= render "show_identity" %>
   </div>
-  <h1> 收費標準 </h1>
-  <p> 儀器使用時間未滿一小時者，以一小時計費。 </p>
-  <h2> <%= @identity.classification %> </h2>
 
-  <!-- FIXME: admin/identities#show & account/identities#show use the same template, use helper to refactor -->
-  <p> SEI 費用：               <%= number_to_currency(number_to_human(@identity.sei_fee, units: {unit: "元/hr"}), precision: 0) %> </p>
-  <p> SEI + EDS 費用：         <%= number_to_currency(number_to_human(@identity.sei_eds_fee, units: {unit: "元/hr"}), precision: 0) %> </p>
-  <p> SEI + EBSD 費用：        <%= number_to_currency(number_to_human(@identity.sei_ebsd_fee, units: {unit: "元/hr"}), precision: 0) %> </p>
-  <p> SEI + EDS + EBSD 費用：  <%= number_to_currency(number_to_human(@identity.sei_eds_ebsd_fee, units: {unit: "元/hr"}), precision: 0) %> </p>
-  <p> 年使用費滿3萬折扣：        <%= number_to_percentage(@identity.discount_above_30k, precision: 0) %> </p>
-  <p> 年使用費滿4萬折扣：        <%= number_to_percentage(@identity.discount_above_40k, precision: 0) %> </p>
-  <p> 年使用費滿6萬折扣：        <%= number_to_percentage(@identity.discount_above_60k, precision: 0) %> </p>
+  <div class="col-md-8">
+    <%= link_to("新增使用單位", new_admin_org_path, :class => "btn btn-primary pull-right")%>
+    <h3>使用單位</h3>
 
-  <%= link_to("新增使用單位", new_admin_org_path, :class => "btn btn-primary pull-right")%>
-  <h3>使用單位</h3>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th> # </th>
+          <th> 名稱 </th>
+          <th> 全名 </th>
+          <th> 地址 </th>
+          <th> 電話 </th>
+          <th> 備註 </th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
 
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th> # </th>
-        <th> 名稱 </th>
-        <th> 全名 </th>
-        <th> 地址 </th>
-        <th> 電話 </th>
-        <th> 備註 </th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @orgs.each do |org| %> 
-      <tr>
-        <td> <%= link_to(org.id, admin_org_path(org)) %> </td>
-        <td> <%= link_to(org.name, admin_org_path(org)) %> </td>
-        <td> <%= org.official_name %> </td>
-        <td> <%= org.address %> </td>
-        <td> <%= org.tel %> </td>
-        <td> <%= org.note %> </td>
-        <td> <%= link_to(" Edit", 
-                         edit_admin_org_path(org), 
-                         :class => "btn btn-primary fa fa-pencil-square-o")%>
-             <%= link_to(" Delete", 
-                         admin_org_path(org), 
-                         :class => "btn btn-danger fa fa-trash-o", 
-                         :method => :delete,
-                         data: { confirm: "Are you sure?" } )%></td> 
-      </tr>
-      <% end %> 
-    </tbody>
-  </table>
+      <tbody>
+        <% @orgs.each do |org| %> 
+        <tr>
+          <td> <%= link_to(org.id, admin_org_path(org)) %> </td>
+          <td> <%= link_to(org.name, admin_org_path(org)) %> </td>
+          <td> <%= org.official_name %> </td>
+          <td> <%= org.address %> </td>
+          <td> <%= org.tel %> </td>
+          <td> <%= org.note %> </td>
+          <td> <%= link_to(" Edit", 
+                           edit_admin_org_path(org), 
+                           :class => "btn btn-primary fa fa-pencil-square-o")%>
+               <%= link_to(" Delete", 
+                           admin_org_path(org), 
+                           :class => "btn btn-danger fa fa-trash-o", 
+                           :method => :delete,
+                           data: { confirm: "Are you sure?" } )%></td> 
+        </tr>
+        <% end %> 
+      </tbody>
+    </table>
+  </div>
 </div>
