@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004130215) do
+ActiveRecord::Schema.define(version: 20141004160711) do
 
   create_table "identities", force: true do |t|
     t.string   "classification"
@@ -81,6 +81,10 @@ ActiveRecord::Schema.define(version: 20141004130215) do
     t.integer  "member_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "sei",          default: true
+    t.boolean  "bei"
+    t.boolean  "eds"
+    t.boolean  "ebsd"
   end
 
   add_index "reservations", ["member_id"], name: "index_reservations_on_member_id"
