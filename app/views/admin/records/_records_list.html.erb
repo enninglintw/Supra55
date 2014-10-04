@@ -50,15 +50,17 @@
       <td> <%= number_to_currency(record.sum_price, precision: 0) %> </td>
 
       <!-- FIXME: add_payment_to_record, and remove_payment_notice_and_paid_from_record -->
-      <td> <% if record.payment_notice %>
+      <td> <% if record.payment_notice.nil? %>
+           <% elsif record.payment_notice? %>
              <i class="fa fa-check"></i>
-           <% elsif record.payment_notice == false %>
+           <% else %>
              <i class="fa fa-remove"></i>
            <% end %> </td>
 
-      <td> <% if record.paid %>
+      <td> <% if record.paid.nil? %>
+           <% elsif record.paid? %>
              <i class="fa fa-check"></i>
-           <% elsif record.paid == false %>
+           <% else %>
              <i class="fa fa-remove"></i>
            <% end %> </td>
            

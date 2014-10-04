@@ -54,25 +54,34 @@
       <!-- FIXME: use l18n to set one: "hr" other: "hrs" -->
       <td> <%= number_to_human(record.sum_hr, units: {unit: "hrs"}) %> </td>
 
-      <!-- FIXME: solve the <br /> problem -->
-      <td> <%= sei_price_detail(record) %> <br />
-           <%= sei_eds_price_detail(record) %> <br />
-           <%= sei_ebsd_price_detail(record) %> <br />
-           <%= sei_eds_ebsd_price_detail(record) %> </td>
+      <td> <% if record.sei_hr != 0 %>
+             <%= sei_price_detail(record) %> <br />
+           <% end %>
+           <% if record.sei_eds_hr != 0 %>
+             <%= sei_eds_price_detail(record) %> <br />
+           <% end %>
+           <% if record.sei_ebsd_hr != 0 %>
+             <%= sei_ebsd_price_detail(record) %> <br />
+           <% end %>
+           <% if record.sei_eds_ebsd_hr != 0 %>
+             <%= sei_eds_ebsd_price_detail(record) %> <br />
+           <% end %>
 
       <td> <%= number_to_currency(record.original_price, precision: 0) %> </td>
       <td> <%= number_to_percentage(record.discount, precision: 0) %> </td>
       <td> <%= number_to_currency(record.sum_price, precision: 0) %> </td>
 
-      <td> <% if record.payment_notice %>
+      <td> <% if record.payment_notice.nil? %>
+           <% elsif record.payment_notice? %>
              <i class="fa fa-check"></i>
-           <% elsif record.payment_notice == false %>
+           <% else %>
              <i class="fa fa-remove"></i>
            <% end %> </td>
 
-      <td> <% if record.paid %>
+      <td> <% if record.paid.nil? %>
+           <% elsif record.paid? %>
              <i class="fa fa-check"></i>
-           <% elsif record.paid == false %>
+           <% else %>
              <i class="fa fa-remove"></i>
            <% end %> </td>
 
