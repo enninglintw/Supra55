@@ -1,5 +1,10 @@
+使用者：  <% if @reservation.member_id.nil? %>
+           <%= current_user.member.name %>
+         <% else %>
+           <%= @reservation.member.name %>
+         <% end %> <br />
+
 <%= form_for @reservation do |f| %>
-  使用者：<%= current_user.member.name %> <br />
   開始時間：<%= f.datetime_select :start_at, 
                                  :ampm => false, 
                                  :minute_step => 10 %> <br />

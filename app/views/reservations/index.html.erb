@@ -14,6 +14,7 @@
         <th> 使用者 </th>
         <th> 開始時間 </th>
         <th> 結束時間 </th>
+        <th> 時數 </th>
         <th> 時段屬性 </th>
       <% if current_user.nil? %>
       <% else %>
@@ -27,14 +28,14 @@
       <% @reservations.each do |reservation| %> 
       <tr>
         <td> <%= reservation.id %> </td>
-        <td> <% if current_user.nil? %>
-             <% elsif current_user.admin? %>
-               <%= link_to(reservation.member.name, admin_member_path(reservation.member)) %>
-             <% else %>
+        <td> <% if current_user.nil? || !current_user.admin? %>
                <%= reservation.member.name %>
+             <% else %>
+               <%= link_to(reservation.member.name, admin_member_path(reservation.member)) %>
              <% end %> </td>
         <td> <%= reservation.start_at %> </td>
         <td> <%= reservation.end_at %> </td>
+        <td> <%= reservation.sum_hr %> </td>
         <td> <%= reservation.section_type %> </td>
       <% if current_user.nil? %>
       <% elsif current_user.admin? || (current_user.member.id == reservation.member_id) %>
