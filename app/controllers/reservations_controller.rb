@@ -24,6 +24,20 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def edit
+    @reservation = Reservation.find(params[:id])
+  end
+
+  def update
+    @reservation = Reservation.find(params[:id])
+
+    if @reservation.update(reservation_params)
+      redirect_to reservations_path, :notice => '編輯預約成功！'
+    else
+      render :edit
+    end
+  end
+
 
   private
 
