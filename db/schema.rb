@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004155201) do
+ActiveRecord::Schema.define(version: 20141004130215) do
 
   create_table "identities", force: true do |t|
     t.string   "classification"
@@ -81,7 +81,6 @@ ActiveRecord::Schema.define(version: 20141004155201) do
     t.integer  "member_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "item"
   end
 
   add_index "reservations", ["member_id"], name: "index_reservations_on_member_id"
