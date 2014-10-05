@@ -10,11 +10,11 @@
     </tr>
     <tr>
       <th> # </th>
-      <th width="100"> 姓名 </th>
-      <th> 單位 </th>
-      <th> 收費標準 </th>
-      <th> 開始時間 </th>
-      <th> 結束時間 </th>
+      <th width="70"> 姓名 </th>
+      <th width="100"> 單位 </th>
+      <th width="70"> 收費標準 </th>
+      <th width="100"> 開始時間 </th>
+      <th width="100"> 結束時間 </th>
       <th> 總時數 </th>
       <th width="300"> 明細 </th>
       <th> 原價 </th>
@@ -22,8 +22,10 @@
       <th> 總價 </th>
       <th> 是否已開繳費通知單？ </th>
       <th> 是否已繳費？ </th>
-      <th> 各使用單位當年度累計金額 </th>
-      <th colspan="2"> </th>
+      <th> 各使用單位 <br /> 當年度統計到前次實驗的累計金額 </th>
+      <th> 各使用單位 <br /> 當年度統計到該次實驗的累計金額 </th>
+      <th> 各使用單位 <br /> 當年度累計總金額 </th>
+      <th colspan="2" width="500"> </th>
     </tr>
   </thead>
 
@@ -40,10 +42,18 @@
       <td> <%= number_to_human(record.sum_hr, units: {unit: "hrs"}) %> </td>
       
       <!-- FIXME: DRY -->
-      <td> <%= sei_price_detail(record) %> <br />
-           <%= sei_eds_price_detail(record) %> <br />
-           <%= sei_ebsd_price_detail(record) %> <br />
-           <%= sei_eds_ebsd_price_detail(record) %> </td>
+      <td> <% if record.sei_hr != 0 %>
+             <%= sei_price_detail(record) %> <br />
+           <% end %>
+           <% if record.sei_eds_hr != 0 %>
+             <%= sei_eds_price_detail(record) %> <br />
+           <% end %>
+           <% if record.sei_ebsd_hr != 0 %>
+             <%= sei_ebsd_price_detail(record) %> <br />
+           <% end %>
+           <% if record.sei_eds_ebsd_hr != 0 %>
+             <%= sei_eds_ebsd_price_detail(record) %> <br />
+           <% end %> </td>
       
       <td> <%= number_to_currency(record.original_price, precision: 0) %> </td>
       <td> <%= number_to_percentage(record.discount, precision: 0) %> </td>
@@ -64,7 +74,10 @@
              <i class="fa fa-remove"></i>
            <% end %> </td>
            
-      <td> <%= record.sum_price_of_the_member %> </td>
+      <td> <%= record.annually_sum_price_before_this_record %> </td>
+      <td> <%= record.annually_sum_price_until_this_record %> </td>
+      <td> <%= record.annually_sum_price %> </td>
+
       <td> <%= link_to(" Edit", 
                        edit_admin_record_path(record), 
                        :class => "btn btn-primary fa fa-pencil-square-o")%>

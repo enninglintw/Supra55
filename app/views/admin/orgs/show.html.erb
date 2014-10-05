@@ -9,11 +9,15 @@
   <p> 地址： <%= @org.address %> </p>
   <p> 電話： <%= @org.tel %> </p>
   <p> 備註： <%= @org.note %> </p>
+  <p> sum_price_of_2014： <%= @org.sum_price_of_2014 %> </p>
   
   <div class="member">
     <%= link_to("新增使用者", new_admin_member_path, :class => "btn btn-primary pull-right")%>
   </div>
   
-  <h3>使用者</h3>
+  <h3> 使用者 </h3>
   <%= render "admin/members/members_list" %>
+
+  <h3> 使用記錄 </h3>
+  <%= render "admin/records/records_list" %>
 </div>

@@ -65,7 +65,7 @@
            <% end %>
            <% if record.sei_eds_ebsd_hr != 0 %>
              <%= sei_eds_ebsd_price_detail(record) %> <br />
-           <% end %>
+           <% end %> </td>
 
       <td> <%= number_to_currency(record.original_price, precision: 0) %> </td>
       <td> <%= number_to_percentage(record.discount, precision: 0) %> </td>

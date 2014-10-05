@@ -27,6 +27,7 @@ class Admin::OrgsController < ApplicationController
   def show
     @org = Org.find(params[:id])
     @members = @org.members
+    @records = @org.records.order(start_at: :asc)
   end
 
   def edit
