@@ -47,39 +47,43 @@ class Record < ActiveRecord::Base
     self.sei_eds_ebsd_price
   end
 
-  # FIXME: 
-  # if self.annually_sum_price_before_this_record >= 60000 會導致迴圈的問題
   def discount
-    if self.original_price >= 6000
-      self.org.identity.discount_above_60k
-    elsif self.original_price >= 4000
-      self.org.identity.discount_above_40k
-    elsif self.original_price >= 3000
-      self.org.identity.discount_above_30k
-    else
+    if self.annually_sum_price_before_this_record < 30000
       100
+    elsif self.annually_sum_price_before_this_record.between?(30000, 40000-1)
+      self.org.identity.discount_above_30k
+    elsif self.annually_sum_price_before_this_record.between?(40000, 60000-1)
+      self.org.identity.discount_above_40k
+    else
+      self.org.identity.discount_above_60k
     end
   end
 
-  def sum_price
-    self.original_price * self.discount / 100
-  end
+  # def sum_price
+  #   self.original_price * self.discount / 100
+  # end
 
   # FIXME: start_at from 2014-01-01 before record.start_at
   # start_at: (self.start_at.beginning_of_year)..(self.start_at - 1.minute)
   def annually_sum_price_before_this_record
+    # Record.where(start_at: (self.start_at.beginning_of_year)..(self.start_at - 1.minute), 
+    #              org_id: self.org_id).inject(0) { |sum, record| sum + record.sum_price }
     Record.where(start_at: (self.start_at.beginning_of_year)..(self.start_at - 1.minute), 
-                 org_id: self.org_id).inject(0) { |sum, record| sum + record.sum_price }
+                 org_id: self.org_id).sum(:sum_price)
   end
 
   def annually_sum_price_until_this_record
+    # Record.where(start_at: (self.start_at.beginning_of_year)..(self.start_at), 
+    #              org_id: self.org_id).inject(0) { |sum, record| sum + record.sum_price }
     Record.where(start_at: (self.start_at.beginning_of_year)..(self.start_at), 
-                 org_id: self.org_id).inject(0) { |sum, record| sum + record.sum_price }
+                 org_id: self.org_id).sum(:sum_price)
   end
 
   def annually_sum_price
+    # Record.where(start_at: (self.start_at.beginning_of_year)..(self.start_at.end_of_year), 
+    #              org_id: self.org_id).inject(0) { |sum, record| sum + record.sum_price }
     Record.where(start_at: (self.start_at.beginning_of_year)..(self.start_at.end_of_year), 
-                 org_id: self.org_id).inject(0) { |sum, record| sum + record.sum_price }
+                 org_id: self.org_id).sum(:sum_price)
   end
 
 end

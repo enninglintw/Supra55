@@ -14,10 +14,12 @@
   <div class="member">
     <%= link_to("新增使用者", new_admin_member_path, :class => "btn btn-primary pull-right")%>
   </div>
-  
   <h3> 使用者 </h3>
   <%= render "admin/members/members_list" %>
 
+  <div class="record">
+    <%= link_to("新增使用記錄", new_admin_record_path, :class => "btn btn-primary pull-right")%>
+  </div>
   <h3> 使用記錄 </h3>
   <%= render "admin/records/records_list" %>
 </div>

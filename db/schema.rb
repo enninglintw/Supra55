@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004160711) do
+ActiveRecord::Schema.define(version: 20141006032734) do
 
   create_table "identities", force: true do |t|
     t.string   "classification"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20141004160711) do
     t.boolean  "payment_notice"
     t.boolean  "paid"
     t.text     "note"
+    t.float    "sum_price"
   end
 
   add_index "records", ["member_id"], name: "index_records_on_member_id"

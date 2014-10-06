@@ -22,7 +22,9 @@
       <th> 總價 </th>
       <th> 是否已開繳費通知單？ </th>
       <th> 是否已繳費？ </th>
-      <th> 各使用單位當年度累計金額 </th>
+      <th> 我的使用單位 <br /> 當年度統計到前次實驗的累計金額 </th>
+      <th> 我的使用單位 <br /> 當年度統計到該次實驗的累計金額 </th>
+      <th> 我的使用單位 <br /> 當年度累計總金額 </th>
     </tr>
   </thead>
 
@@ -85,7 +87,9 @@
              <i class="fa fa-remove"></i>
            <% end %> </td>
 
-      <td> <%= record.sum_price_of_the_member %> </td>
+      <td> <%= record.annually_sum_price_before_this_record %> </td>
+      <td> <%= record.annually_sum_price_until_this_record %> </td>
+      <td> <%= record.annually_sum_price %> </td>
     </tr>
     <% end %>
   </tbody>
