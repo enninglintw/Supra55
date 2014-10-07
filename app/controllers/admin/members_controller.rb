@@ -4,12 +4,12 @@ class Admin::MembersController < ApplicationController
   before_action :admin_required
 
   def index
-    @members = Member.all.order(org_id: :desc)
+    @members = Member.all.sort_by { |member| [member.org.identity_id, member.org_id] }
   end
 
   def new
     @member = Member.new
-    @options = Org.all.collect do |org|
+    @options = Org.all.order(identity_id: :asc, id: :asc).collect do |org|
       [org.name, org.id]
     end
     @license_status = ['不具學習資格', '未學習操作', '已學習操作', '已考照', '？']
@@ -38,7 +38,7 @@ class Admin::MembersController < ApplicationController
 
   def edit
     @member = Member.find(params[:id])
-    @options = Org.all.collect do |org|
+    @options = Org.all.order(identity_id: :asc, id: :asc).collect do |org|
       [org.name, org.id]
     end
 

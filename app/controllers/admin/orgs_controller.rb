@@ -4,7 +4,7 @@ class Admin::OrgsController < ApplicationController
   before_action :admin_required
 
   def index
-    @orgs = Org.all
+    @orgs = Org.all.order(identity_id: :asc, id: :asc)
   end
 
   def new

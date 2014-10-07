@@ -1,11 +1,13 @@
 <%= form_for [:admin, @record] do |f| %>
   使用者：<%= f.select :member_id, @options %> <br />
-  開始時間：<%= f.datetime_select :start_at, 
+  開始時間：<%= f.text_field :start_at %> <br />
+  結束時間：<%= f.text_field :end_at %> <br />
+  <!-- 開始時間：<%= f.datetime_select :start_at, 
                                  :ampm => false, 
                                  :minute_step => 10 %> <br />
   結束時間：<%= f.datetime_select :end_at, 
                                  :ampm => false, 
-                                 :minute_step => 10 %> <br />
+                                 :minute_step => 10 %> <br /> -->
   【使用時數】<br />
   SEI：<%= f.number_field :sei_hr, :step => 0.5 %> <br />
   SEI + EDS：<%= f.number_field :sei_eds_hr, :step => 0.5 %> <br />

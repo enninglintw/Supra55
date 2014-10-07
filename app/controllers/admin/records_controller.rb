@@ -12,8 +12,8 @@ class Admin::RecordsController < ApplicationController
   def new
     @record = Record.new
     
-    @options = Member.all.collect do |member|
-      [member.name, member.id]
+    @options = Member.all.sort_by { |member| [member.org.identity_id, member.org_id] }.collect do |member|
+      [member.name + " (" + member.org.name + ")", member.id]
     end
   end
 
@@ -33,8 +33,8 @@ class Admin::RecordsController < ApplicationController
   def edit
     @record = Record.find(params[:id])
     
-    @options = Member.all.collect do |member|
-      [member.name, member.id]
+    @options = Member.all.sort_by { |member| [member.org.identity_id, member.org_id] }.collect do |member|
+      [member.name + " (" + member.org.name + ")", member.id]
     end
   end
 
