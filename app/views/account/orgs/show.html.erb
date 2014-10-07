@@ -9,6 +9,6 @@
   <p> 地址： <%= @org.address %> </p>
   <p> 電話： <%= @org.tel %> </p>
   
-  <h3> 所有使用者 </h3>
+  <h3> 所有使用者 共<%= @members.size %>人  </h3>
   <%= render "account/members/members_list" %>
 </div>

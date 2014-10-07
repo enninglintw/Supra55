@@ -37,9 +37,9 @@
              <% else %>
                <%= link_to(reservation.member.name, admin_member_path(reservation.member)) %>
              <% end %> </td>
-        <td> <%= reservation.start_at %> </td>
-        <td> <%= reservation.end_at %> </td>
-        <td> <%= reservation.sum_hr %> </td>
+        <td> <%= reservation.start_at.to_s(:db) %> </td>
+        <td> <%= reservation.end_at.to_s(:db) %> </td>
+        <td> <%= number_to_human(reservation.sum_hr, units: {unit: "hrs"}) %> </td>
         <td> <% if reservation.sei? %>
                <i class="fa fa-check"></i>
              <% end %> </td>

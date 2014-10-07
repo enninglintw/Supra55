@@ -87,9 +87,9 @@
              <i class="fa fa-remove"></i>
            <% end %> </td>
 
-      <td> <%= record.annually_sum_price_before_this_record %> </td>
-      <td> <%= record.annually_sum_price_until_this_record %> </td>
-      <td> <%= record.annually_sum_price %> </td>
+      <td> <%= number_to_currency(record.annually_sum_price_before_this_record, precision: 0) %> </td>
+      <td> <%= number_to_currency(record.annually_sum_price_until_this_record, precision: 0) %> </td>
+      <td> <%= number_to_currency(record.annually_sum_price, precision: 0) %> </td>
     </tr>
     <% end %>
   </tbody>

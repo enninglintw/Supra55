@@ -9,6 +9,6 @@
   <p> 地址： <%= @org.address %> </p>
   <p> 電話： <%= @org.tel %> </p>
 
-  <h3> 所有使用記錄 </h3>
+  <h3> 所有使用記錄 共<%= @records.size %>筆 </h3>
   <%= render "records_list" %>
 </div>

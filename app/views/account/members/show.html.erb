@@ -13,7 +13,7 @@
   <p> EDS： <%= @member.eds %> </p>
   <p> EBSD： <%= @member.ebsd %> </p>
  
-  <h3> 我的使用記錄 </h3>
+  <h3> 我的使用記錄 共<%= @records.size %>筆 </h3>
   <%= render "account/records/records_list" %>
 
 </div>

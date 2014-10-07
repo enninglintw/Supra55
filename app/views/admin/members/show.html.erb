@@ -15,7 +15,7 @@
   <div class="record">
     <%= link_to("新增使用記錄", new_admin_record_path, :class => "btn btn-primary pull-right")%>
   </div>
-  <h3> 使用記錄 </h3>
+  <h3> 使用記錄 共<%= @records.size %>筆 </h3>
   <%= render "admin/records/records_list" %>
 
 </div>
