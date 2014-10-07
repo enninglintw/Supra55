@@ -1,0 +1,40 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th> </th>
+      <th> id </th>
+      <th> 日期 </th>
+      <th> 星期 </th>
+      <th> 開始時間 </th>
+      <th> 結束時間 </th>
+      <th> 操作員 </th>
+      <th colspan="2"> </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @time_sections.each do |time_section| %>
+    <tr>
+      <td> <%= link_to(" 預約", 
+                       new_reservation_path, 
+                       :class => "btn btn-primary fa fa-pencil-square-o")%> </td>
+
+      <td> <%= time_section.id %> </td>
+      <td> <%= time_section.start_time.to_date %> </td>
+      <td> <%= time_section.start_time.strftime("%a") %> </td>
+      <td> <%= time_section.start_time.strftime("%I:%M %p") %> </td>
+      <td> <%= time_section.end_time.strftime("%I:%M %p") %> </td>
+      <td> <%= time_section.operator_status %> </td>
+ 
+      <td> <%= link_to(" Edit", 
+                       edit_admin_time_section_path(time_section), 
+                       :class => "btn btn-primary fa fa-pencil-square-o")%>
+           <%= link_to(" Delete", 
+                       admin_time_section_path(time_section), 
+                       :class => "btn btn-danger fa fa-trash-o", 
+                       :method => :delete,
+                       data: { confirm: "Are you sure?" } )%> </td> 
+    </tr>
+    <% end %> 
+  </tbody>
+</table>

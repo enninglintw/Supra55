@@ -1,0 +1,9 @@
+<div class="col-md-12"> 
+  <h1> 所有預約時段 共<%= @time_sections.size %>筆 </h1>
+
+  <div class="time_section">
+    <%= link_to("新增預約時段", new_admin_time_section_path, :class => "btn btn-primary pull-right" ) %>
+  </div>
+  
+  <%= render "time_sections_list" %>
+</div>

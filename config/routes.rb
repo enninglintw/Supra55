@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :orgs
     resources :members
     resources :records
+    resources :time_sections
   end
 
   namespace :account do
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
     get 'welcome', on: :collection
   end
 
-  root 'reservations#index'
+  root 'admin/time_sections#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
