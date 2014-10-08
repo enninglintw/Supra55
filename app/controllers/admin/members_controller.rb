@@ -36,7 +36,7 @@ class Admin::MembersController < ApplicationController
       [org.name, org.id]
     end
 
-    if @member.org.identity_id != 1
+    if @member.org.identity.name != "自行操作"
       @license_status = ['不具學習資格']
     else
       @license_status = ['不具學習資格', '未學習操作', '已學習操作', '已考照', '？']
@@ -69,6 +69,7 @@ class Admin::MembersController < ApplicationController
                                    :tel,
                                    :email,
                                    :org_id,
+                                   :user_id,
                                    :sei,
                                    :eds,
                                    :ebsd)

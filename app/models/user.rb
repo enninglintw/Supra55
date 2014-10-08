@@ -16,7 +16,8 @@ class User < ActiveRecord::Base
     if exists_member.present?
       exists_member.update(email: email, user_id: id)
     else
-      Member.create(name: name, email: email, user_id: id)
+      # FIXME: org_id = 1
+      Member.create(name: name, email: email, user_id: id, org_id: 1)
     end
   end
 
