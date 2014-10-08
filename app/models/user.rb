@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   has_one :member
 
-  after_save :find_and_bind_member
+  after_create :find_and_bind_member
 
   protected
 

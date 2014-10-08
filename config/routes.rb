@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     get 'welcome', on: :collection
   end
 
-  root 'admin/time_sections#index'
+  root 'reservations#welcome'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

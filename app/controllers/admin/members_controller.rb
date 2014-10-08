@@ -19,12 +19,6 @@ class Admin::MembersController < ApplicationController
     @member = Member.new(member_params)
     
     if @member.save
-      if @member.org.identity_id != 1
-        @member.sei = '不具學習資格'
-        @member.eds = '不具學習資格'
-        @member.ebsd = '不具學習資格'
-        @member.save
-      end
       redirect_to admin_members_path, :notice => '新增使用者成功！'
     else
       render :new
