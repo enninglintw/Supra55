@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_one :member
 
+  validates_presence_of :name
+
   after_create :find_and_bind_member
 
   protected

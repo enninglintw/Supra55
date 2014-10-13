@@ -6,13 +6,13 @@
   <%= devise_error_messages! %>
 
   <div>
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.label "姓名（註冊後不可更改！）" %><br />
+    <%= f.text_field :name %>
   </div>
 
   <div>
-    <%= f.label "姓名" %><br />
-    <%= f.text_field :name %>
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
   </div>
 
   <div>
