@@ -1,7 +1,4 @@
-class Admin::MembersController < ApplicationController
-
-  before_action :authenticate_user!
-  before_action :admin_required
+class Admin::MembersController < AdminController
 
   def index
     @members = Member.all.sort_by { |member| [member.org.identity_id, member.org_id] }

@@ -1,7 +1,4 @@
-class Admin::RecordsController < ApplicationController
-
-  before_action :authenticate_user!
-  before_action :admin_required
+class Admin::RecordsController < AdminController
 
   def index
     @records = Record.all.order(start_at: :asc)

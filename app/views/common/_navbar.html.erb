@@ -27,7 +27,7 @@
                          account_records_path, 
                          class: "fa fa-file-text") %> </li>
       <% end %>
-      <% if current_user.admin? %>
+      <% if current_user %>
         <li> Admin </li>
         <li> <%= link_to("收費標準", 
                          admin_identities_path, 

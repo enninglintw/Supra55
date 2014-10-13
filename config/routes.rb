@@ -13,9 +13,7 @@ Rails.application.routes.draw do
   namespace :account do
     resources :identities
     resources :orgs
-    resources :members do
-      patch 'remove_from_org', on: :member
-    end
+    resources :members
     resources :records
   end
 

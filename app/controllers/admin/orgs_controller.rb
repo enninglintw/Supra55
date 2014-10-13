@@ -1,7 +1,4 @@
-class Admin::OrgsController < ApplicationController
-
-  before_action :authenticate_user!
-  before_action :admin_required
+class Admin::OrgsController < AdminController
 
   def index
     @orgs = Org.all.order(identity_id: :asc, id: :asc)

@@ -1,7 +1,4 @@
-class Admin::IdentitiesController < ApplicationController
-
-  before_action :authenticate_user!
-  before_action :admin_required
+class Admin::IdentitiesController < AdminController
 
   def index
     @identities = Identity.all
