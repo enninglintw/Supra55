@@ -33,11 +33,12 @@ class Admin::MembersController < AdminController
       [org.name, org.id]
     end
 
-    if @member.org.identity.name != "自行操作"
-      @license_status = ['不具學習資格']
-    else
+    # FIXME: undefined method `name' for #<Identity:0x007fdd5a4c0a38>
+    # if @member.org.identity.name != "自行操作"
+    #   @license_status = ['不具學習資格']
+    # else
       @license_status = ['不具學習資格', '未學習操作', '已學習操作', '已考照', '？']
-    end
+    # end
 
   end
 
