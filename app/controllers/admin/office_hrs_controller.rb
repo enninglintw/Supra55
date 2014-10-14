@@ -18,6 +18,27 @@ class Admin::OfficeHrsController < AdminController
     end
   end
 
+  def edit
+    @office_hr = OfficeHr.find(params[:id])
+  end
+
+  def update
+    @office_hr = OfficeHr.find(params[:id])
+
+    if @office_hr.update(office_hr_params)
+      redirect_to admin_office_hrs_path, :notice => '編輯上班時段成功！'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @office_hr = OfficeHr.find(params[:id])
+
+    @office_hr.destroy
+    redirect_to admin_office_hrs_path, :alert => '上班時段已刪除！'    
+  end
+
 
   private
 
