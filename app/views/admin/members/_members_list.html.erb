@@ -1,17 +1,17 @@
 <table class="table table-hover">
   <thead> 
     <tr>
-      <th>#</th>
-      <th>姓名</th>
-      <th>電話</th>
-      <th>帳號</th>
-      <th>email</th>
-      <th>隸屬單位</th>
-      <th>收費標準</th>
-      <th>SEI</th>
-      <th>EDS</th>
-      <th>EBSD</th>
-      <th colspan="2"></th>
+      <th> # </th>
+      <th> 姓名 </th>
+      <th> 電話 </th>
+      <th> 帳號 </th>
+      <th> email </th>
+      <th> 隸屬單位 </th>
+      <th> 收費標準 </th>
+      <th> SEI/BEI執照 </th>
+      <th> EDS執照 </th>
+      <th> EBSD執照 </th>
+      <th colspan="2"> </th>
     </tr>
   </thead>
 
@@ -29,9 +29,9 @@
       <td> <%= member.email %> </td>
       <td> <%= link_to(member.org.name, admin_org_path(member.org_id)) %> </td>
       <td> <%= link_to(member.org.identity.classification, admin_identity_path(member.org.identity_id)) %> </td>
-      <td> <%= member.sei %> </td>
-      <td> <%= member.eds %> </td>
-      <td> <%= member.ebsd %> </td>
+      <td> <%= member.sei_bei_license %> </td>
+      <td> <%= member.eds_license %> </td>
+      <td> <%= member.ebsd_license %> </td>
       <td> <%= link_to(" Edit", 
                        edit_admin_member_path(member), 
                        :class => "btn btn-primary fa fa-pencil-square-o")%>

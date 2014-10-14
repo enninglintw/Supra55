@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'font-awesome-sass'
+gem 'simple_enum'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

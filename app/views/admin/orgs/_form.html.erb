@@ -1,5 +1,7 @@
 <%= form_for [:admin, @org] do |f| %>
-  收費標準：<%= f.select :identity_id, @options %> <br />
+  收費標準：<%= f.collection_select :identity_id, 
+              Identity.all.order(id: :asc), 
+              :id, :classification %> <br />
   名稱：<%= f.text_field :name %> <br />
   全名：<%= f.text_area :official_name %> <br />
   地址：<%= f.text_area :address %> <br />

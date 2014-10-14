@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141007115138) do
+ActiveRecord::Schema.define(version: 20141014024350) do
 
   create_table "identities", force: true do |t|
     t.string   "classification"
@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 20141007115138) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "email"
-    t.string   "sei"
-    t.string   "eds"
-    t.string   "ebsd"
+    t.integer  "sei_bei_license_cd"
+    t.integer  "eds_license_cd"
+    t.integer  "ebsd_license_cd"
   end
 
   add_index "members", ["org_id"], name: "index_members_on_org_id"

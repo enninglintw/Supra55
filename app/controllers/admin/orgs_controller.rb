@@ -6,9 +6,6 @@ class Admin::OrgsController < AdminController
 
   def new
     @org = Org.new
-    @options = Identity.all.collect do |identity|
-      [identity.classification, identity.id]
-    end
   end
 
   def create
@@ -29,9 +26,6 @@ class Admin::OrgsController < AdminController
 
   def edit
     @org = Org.find(params[:id])
-    @options = Identity.all.collect do |identity|
-      [identity.classification, identity.id]
-    end
   end
 
   def update

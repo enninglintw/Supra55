@@ -1,14 +1,14 @@
 <table class="table table-hover">
   <thead> 
     <tr>
-      <th>#</th>
-      <th>姓名</th>
-      <th>電話</th>
-      <th>帳號</th>
-      <th>email</th>
-      <th>SEI</th>
-      <th>EDS</th>
-      <th>EBSD</th>
+      <th> # </th>
+      <th> 姓名 </th>
+      <th> 電話 </th>
+      <th> 帳號 </th>
+      <th> email </th>
+      <th> SEI/BEI執照 </th>
+      <th> EDS執照 </th>
+      <th> EBSD執照 </th>
     </tr>
   </thead>
 
@@ -29,9 +29,9 @@
              <i class="fa fa-remove"></i>
            <% end %> </td>
       <td> <%= member.email %> </td>
-      <td> <%= member.sei %> </td>
-      <td> <%= member.eds %> </td>
-      <td> <%= member.ebsd %> </td>
+      <td> <%= member.sei_bei_license %> </td>
+      <td> <%= member.eds_license %> </td>
+      <td> <%= member.ebsd_license %> </td>
     </tr>
     <% end %> 
   </tbody>

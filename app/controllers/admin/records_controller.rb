@@ -8,10 +8,6 @@ class Admin::RecordsController < AdminController
 
   def new
     @record = Record.new
-    
-    @options = Member.all.sort_by { |member| [member.org.identity_id, member.org_id] }.collect do |member|
-      [member.name + " (" + member.org.name + ")", member.id]
-    end
   end
 
   def create
@@ -29,10 +25,6 @@ class Admin::RecordsController < AdminController
 
   def edit
     @record = Record.find(params[:id])
-    
-    @options = Member.all.sort_by { |member| [member.org.identity_id, member.org_id] }.collect do |member|
-      [member.name + " (" + member.org.name + ")", member.id]
-    end
   end
 
   def update

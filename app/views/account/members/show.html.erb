@@ -9,10 +9,10 @@
                            account_org_path(@member.org_id)) %> </p>
   <p> 收費標準： <%= link_to(@member.org.identity.classification, 
                            account_identity_path(@member.org.identity_id)) %> </p>
-  <p> SEI： <%= @member.sei %> </p>
-  <p> EDS： <%= @member.eds %> </p>
-  <p> EBSD： <%= @member.ebsd %> </p>
- 
+  <p> SEI/BEI執照： <%= @member.sei_bei_license %> </p>
+  <p> EDS執照： <%= @member.eds_license %> </p>
+  <p> EBSD執照： <%= @member.ebsd_license %> </p>
+
   <h3> 我的使用記錄 共<%= @records.size %>筆 </h3>
   <%= render "account/records/records_list" %>
 

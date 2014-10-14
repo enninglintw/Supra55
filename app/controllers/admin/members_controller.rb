@@ -6,10 +6,6 @@ class Admin::MembersController < AdminController
 
   def new
     @member = Member.new
-    @options = Org.all.order(identity_id: :asc, id: :asc).collect do |org|
-      [org.name, org.id]
-    end
-    @license_status = ['不具學習資格', '未學習操作', '已學習操作', '已考照', '？']
   end
 
   def create
@@ -29,17 +25,6 @@ class Admin::MembersController < AdminController
 
   def edit
     @member = Member.find(params[:id])
-    @options = Org.all.order(identity_id: :asc, id: :asc).collect do |org|
-      [org.name, org.id]
-    end
-
-    # FIXME: undefined method `name' for #<Identity:0x007fdd5a4c0a38>
-    # if @member.org.identity.name != "自行操作"
-    #   @license_status = ['不具學習資格']
-    # else
-      @license_status = ['不具學習資格', '未學習操作', '已學習操作', '已考照', '？']
-    # end
-
   end
 
   def update
@@ -68,8 +53,8 @@ class Admin::MembersController < AdminController
                                    :email,
                                    :org_id,
                                    :user_id,
-                                   :sei,
-                                   :eds,
-                                   :ebsd)
+                                   :sei_bei_license,
+                                   :eds_license,
+                                   :ebsd_license)
   end
 end
