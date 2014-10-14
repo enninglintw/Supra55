@@ -46,12 +46,12 @@ ActiveRecord::Schema.define(version: 20141014090839) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "date"
-    t.integer  "time_00_09", default: 1
-    t.integer  "time_09_12", default: 3
-    t.integer  "time_12_14", default: 2
-    t.integer  "time_14_17", default: 3
-    t.integer  "time_17_20", default: 1
-    t.integer  "time_20_24", default: 1
+    t.integer  "time_00_09_cd", default: 1
+    t.integer  "time_09_12_cd", default: 3
+    t.integer  "time_12_14_cd", default: 2
+    t.integer  "time_14_17_cd", default: 3
+    t.integer  "time_17_20_cd", default: 1
+    t.integer  "time_20_24_cd", default: 1
   end
 
   create_table "orgs", force: true do |t|

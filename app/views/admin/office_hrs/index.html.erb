@@ -1,0 +1,9 @@
+<div class="col-md-12"> 
+  <h1> 所有上班時段 共<%= @office_hrs.size %>天 </h1>
+
+  <div class="office_hr">
+    <%= link_to("新增上班時段", new_admin_office_hr_path, :class => "btn btn-primary pull-right" ) %>
+  </div>
+  
+  <%= render "office_hrs_list" %>
+</div>

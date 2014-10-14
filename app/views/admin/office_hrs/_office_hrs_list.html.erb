@@ -1,0 +1,41 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th> # </th>
+      <th> 日期 </th>
+      <th> 時段 00-09 </th>
+      <th> 時段 09-12 </th>
+      <th> 時段 12-14 </th>
+      <th> 時段 14-17 </th>
+      <th> 時段 17-20 </th>
+      <th> 時段 20-24 </th>
+      <th colspan="2"> </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @office_hrs.each do |office_hr| %>
+    <tr>
+      <td> <%= office_hr.id %> </td>
+      <td> <%= office_hr.date %> </td>
+      <td> <%= link_to(office_hr.time_00_09, 
+                       new_reservation_path, 
+                       class: "fa fa-pencil-square-o") %> </td>
+      <td> <%= office_hr.time_09_12 %> </td>
+      <td> <%= office_hr.time_12_14 %> </td>
+      <td> <%= office_hr.time_14_17 %> </td>
+      <td> <%= office_hr.time_17_20 %> </td>
+      <td> <%= office_hr.time_20_24 %> </td>
+
+      <td> <%= link_to(" Edit", 
+                       edit_admin_office_hr_path(office_hr), 
+                       :class => "btn btn-primary fa fa-pencil-square-o")%>
+           <%= link_to(" Delete", 
+                       admin_office_hr_path(office_hr), 
+                       :class => "btn btn-danger fa fa-trash-o", 
+                       :method => :delete,
+                       data: { confirm: "Are you sure?" } )%> </td> 
+    </tr>
+    <% end %> 
+  </tbody>
+</table>

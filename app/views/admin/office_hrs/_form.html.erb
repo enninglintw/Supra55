@@ -1,0 +1,13 @@
+<%= form_for [:admin, @office_hr] do |f| %>
+  日期：<%= f.date_select :date %> <br />
+  時段 00-09：<%= f.select :time_00_09, enum_option_pairs(OfficeHr, :time_00_09) %> <br />
+  時段 09-12：<%= f.select :time_09_12, enum_option_pairs(OfficeHr, :time_09_12) %> <br />
+  時段 12-14：<%= f.select :time_12_14, enum_option_pairs(OfficeHr, :time_12_14) %> <br />
+  時段 14-17：<%= f.select :time_14_17, enum_option_pairs(OfficeHr, :time_14_17) %> <br />
+  時段 17-20：<%= f.select :time_17_20, enum_option_pairs(OfficeHr, :time_17_20) %> <br />
+  時段 20-24：<%= f.select :time_20_24, enum_option_pairs(OfficeHr, :time_20_24) %> <br />
+
+  <div class="form-actions">
+    <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%> 
+  </div>
+<% end %>

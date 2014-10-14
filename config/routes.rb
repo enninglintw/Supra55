@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :members
     resources :records
     resources :time_sections
+    resources :office_hrs
   end
 
   namespace :account do
