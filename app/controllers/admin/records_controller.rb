@@ -1,7 +1,8 @@
 class Admin::RecordsController < AdminController
 
   def index
-    @records = Record.all.order(start_at: :asc)
+    # @records = Record.all.order(start_at: :asc)
+    @records = Record.all.sort_by { |record| [record.org.identity_id, record.org_id, record.start_at] }
     # FIXME: DRY
     # @items = ["sei", "sei_eds", "sei_ebsd", "sei_eds_ebsd"]
   end

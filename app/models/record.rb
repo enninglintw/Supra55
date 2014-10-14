@@ -48,14 +48,24 @@ class Record < ActiveRecord::Base
   end
 
   def discount
-    if self.annually_sum_price_before_this_record < 30000
-      100
-    elsif self.annually_sum_price_before_this_record.between?(30000, 40000-1)
-      self.org.identity.discount_above_30k
-    elsif self.annually_sum_price_before_this_record.between?(40000, 60000-1)
-      self.org.identity.discount_above_40k
-    else
-      self.org.identity.discount_above_60k
+    # if self.annually_sum_price_before_this_record < 30000
+    #   100
+    # elsif self.annually_sum_price_before_this_record.between?(30000, 40000-1)
+    #   self.org.identity.discount_above_30k
+    # elsif self.annually_sum_price_before_this_record.between?(40000, 60000-1)
+    #   self.org.identity.discount_above_40k
+    # else
+    #   self.org.identity.discount_above_60k
+    # end
+    case self.annually_sum_price_before_this_record
+      when 0..30000
+        100
+      when 30000..39999
+        self.org.identity.discount_above_30k
+      when 40000..59999
+        self.org.identity.discount_above_40k
+      else
+        self.org.identity.discount_above_60k
     end
   end
 
