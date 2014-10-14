@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141014090631) do
+ActiveRecord::Schema.define(version: 20141014090839) do
 
   create_table "identities", force: true do |t|
     t.string   "classification"
@@ -45,6 +45,13 @@ ActiveRecord::Schema.define(version: 20141014090631) do
   create_table "office_hrs", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "date"
+    t.integer  "time_00_09", default: 1
+    t.integer  "time_09_12", default: 3
+    t.integer  "time_12_14", default: 2
+    t.integer  "time_14_17", default: 3
+    t.integer  "time_17_20", default: 1
+    t.integer  "time_20_24", default: 1
   end
 
   create_table "orgs", force: true do |t|
