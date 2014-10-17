@@ -1,7 +1,7 @@
 class Admin::OfficeHrsController < AdminController
 
   def index
-    @office_hrs = OfficeHr.all
+    @office_hrs = OfficeHr.all.order(date: :asc)
   end
 
   def new

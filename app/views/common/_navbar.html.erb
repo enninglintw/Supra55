@@ -12,10 +12,6 @@
         <li> <%= link_to("預約表", 
                          reservations_path, 
                          class: "fa fa-pencil-square-o") %> </li>
-        <li> <%= link_to("上班時段", 
-                         admin_office_hrs_path, 
-                         class: "fa fa-pencil-square-o") %> </li>
-                         
     <% if current_user %>
         <li> Account </li>
       <% if current_user.member.org_id.nil? %>
@@ -45,6 +41,9 @@
         <li> <%= link_to("所有使用記錄", 
                          admin_records_path, 
                          class: "fa fa-file-text") %> </li>
+        <li> <%= link_to("上班時段設定", 
+                         admin_office_hrs_path, 
+                         class: "fa fa-pencil-square-o") %> </li>
       </ul>
       <% end %>
     <% end %>
