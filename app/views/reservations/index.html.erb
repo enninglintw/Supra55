@@ -1,4 +1,81 @@
-<div class="col-md-10 col-md-offset-1">
+<div class="col-md-12">
+  <h1> 十月份預約表 </h1>
+  <table class="table table-striped">
+    <tbody>
+    <% @filtered_reservation.each do |result| %>
+      <% if OfficeHr.find_by(date: result.date).nil? %>
+      <h3> <%= result.date %> 放假 </h3>
+      <tr>
+        時段 00-09：
+        <%= link_to("off_duty", new_reservation_path(date: result.date, time_id: 1)) %>
+        <% result.reservations.each do |reservation| %>
+          <%= reservation.start_at_time %> -
+          <%= reservation.end_at_time %>
+          <%= reservation.member.name %>
+        <% end %>
+      </tr><br />
+
+      <tr>
+        時段 09-12：
+        <%= link_to("off_duty", new_reservation_path(date: result.date, time_id: 2)) %>
+      </tr> <br />
+      <tr>
+        時段 12-14：
+        <%= link_to("off_duty", new_reservation_path(date: result.date, time_id: 3)) %>
+      </tr> <br />
+      <tr>
+        時段 14-17：
+        <%= link_to("off_duty", new_reservation_path(date: result.date, time_id: 4)) %>
+      </tr> <br />
+      <tr>
+        時段 17-20：
+        <%= link_to("off_duty", new_reservation_path(date: result.date, time_id: 5)) %>
+      </tr> <br />
+      <tr>
+        時段 20-24：
+        <%= link_to("off_duty", new_reservation_path(date: result.date, time_id: 6)) %>
+      </tr> <br />
+      <% else %>
+      <h3> <%= result.date %> 上班 </h3>
+      <tr>
+        時段 00-09：
+        <%= link_to(OfficeHr.find_by(date: result.date).time_00_09, 
+                    new_reservation_path(date: result.date, time_id: 1)) %>
+        <% result.reservations.each do |reservation| %>
+        <%= reservation.start_at_time %> -
+        <%= reservation.end_at_time %>
+        <%= reservation.member.name %>
+        <% end %>
+      </tr> <br />
+      <tr>
+        時段 09-12：
+        <%= link_to(OfficeHr.find_by(date: result.date).time_09_12, 
+                    new_reservation_path(date: result.date, time_id: 2)) %>
+      </tr> <br />
+      <tr>
+        時段 12-14：
+        <%= link_to(OfficeHr.find_by(date: result.date).time_12_14, 
+                    new_reservation_path(date: result.date, time_id: 3)) %> 
+      </tr> <br />
+      <tr>
+        時段 14-17：
+        <%= link_to(OfficeHr.find_by(date: result.date).time_14_17, 
+                    new_reservation_path(date: result.date, time_id: 4)) %> 
+      </tr> <br />
+      <tr>
+        時段 17-20：
+        <%= link_to(OfficeHr.find_by(date: result.date).time_17_20, 
+                    new_reservation_path(date: result.date, time_id: 5)) %> 
+      </tr> <br />
+      <tr>
+        時段 20-24：
+        <%= link_to(OfficeHr.find_by(date: result.date).time_20_24, 
+                    new_reservation_path(date: result.date, time_id: 6)) %>
+      </tr> <br />
+      <% end %>
+    <% end %>
+    </tbody>
+  </table>
 
   <h1> 預約表 </h1>
 

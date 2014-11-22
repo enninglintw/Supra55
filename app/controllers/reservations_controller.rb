@@ -5,10 +5,14 @@ class ReservationsController < ApplicationController
 
   def index
     @reservations = Reservation.all.order(start_at: :asc)
+    @filtered_reservation = Reservation.build_collection(Date.today.end_of_month.day - Date.today.beginning_of_month.day + 1)
   end
 
+  # GET /reservations/new?time_id=aa
+  # link_to(new_reservation_path(time_id: 'aa'), 'Link to new')
   def new
-    @reservation = Reservation.new
+    @time_id = params[:time_id]
+    @reservation = Reservation.new(start_at: params[:date], end_at: params[:date])
   end
 
   def create
@@ -20,6 +24,8 @@ class ReservationsController < ApplicationController
     if @reservation.save
       redirect_to reservations_path, :notice => '新增預約成功！'
     else
+      # QUESTION Eddie: why?
+      @time_id = params[:time_id]
       render :new
     end
   end

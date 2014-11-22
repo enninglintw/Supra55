@@ -5,9 +5,23 @@
          <% end %> <br />
 
 <%= form_for @reservation do |f| %>
+  <% if @reservation.errors.present? %>
+    <ul>
+    <%= @reservation.errors.messages do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
+  預約日期：<%= @reservation.start_at.to_date %> <br />
+  <input type="hidden" name="time_id" value="<%= @time_id %>">
+  <%= f.hidden_field :start_at %>
+  開始時間：<%= f.select :start_at_time, Reservation.start_time_select(@time_id) %> <br />
+  結束時間：<%= f.select :end_at_time, Reservation.end_time_select(@time_id) %> <br />
+
   開始時間：<%= f.datetime_select :start_at, 
                                  :ampm => false, 
-                                 :minute_step => 10 %> <br />
+                                 :minute_step => 10,
+                                 default: Date.today %> <br />
   結束時間：<%= f.datetime_select :end_at, 
                                  :ampm => false, 
                                  :minute_step => 10 %> <br />

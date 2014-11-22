@@ -7,6 +7,17 @@ class Record < ActiveRecord::Base
                         :sei_ebsd_hr, 
                         :sei_eds_ebsd_hr
 
+  # FIXME:
+  # write a callback after editing identity's column:
+  # after_create :update_sum!
+
+  # @record = Record.find(1)
+  # Record.all.each { |r| r.update_sum! }
+  # before_save :update_sum!
+
+  # def update_sum!
+  # end
+
   def org_name
     self.org.name
   end
@@ -60,18 +71,24 @@ class Record < ActiveRecord::Base
     case self.annually_sum_price_before_this_record
       when 0..30000
         100
-      when 30000..39999
+      when 30000..(40000-1)
         self.org.identity.discount_above_30k
-      when 40000..59999
+      when 40000..(60000-1)
         self.org.identity.discount_above_40k
       else
         self.org.identity.discount_above_60k
     end
   end
 
-  # def sum_price
-  #   self.original_price * self.discount / 100
-  # end
+  def sum_price
+    self.original_price * self.discount / 100
+  end
+
+  def update_sum!
+    self.org_id = self.member.org_id
+    self.sum_price = self.original_price * self.discount / 100
+    self.save
+  end
 
   # FIXME: start_at from 2014-01-01 before record.start_at
   # start_at: (self.start_at.beginning_of_year)..(self.start_at - 1.minute)
