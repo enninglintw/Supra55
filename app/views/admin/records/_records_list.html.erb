@@ -41,7 +41,7 @@
       <!-- FIXME: use l18n to set one: "hr" other: "hrs" -->
       <td> <%= number_to_human(record.sum_hr, units: {unit: "hrs"}) %> </td>
       
-      <!-- FIXME: DRY -->
+      <!-- FIXME: DRY use [].join -->
       <td> <% if record.sei_hr != 0 %>
              <%= sei_price_detail(record) %> <br />
            <% end %>
